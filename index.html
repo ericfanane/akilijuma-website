@@ -452,7 +452,7 @@ footer{background:#060c09;border-top:1px solid var(--border);padding:48px 24px 2
       <div class="form-group">
         <label data-tr="form_industry">Industry</label>
         <select id="f-industry">
-          <option value="">Select...</option>
+          <option value="" data-tr="form_select">Select...</option>
           <option value="healthcare" data-tr="ind_healthcare">Healthcare</option>
           <option value="coldchain" data-tr="ind_coldchain">Cold Chain</option>
           <option value="pharmacy" data-tr="ind_pharmacy">Pharmacy</option>
@@ -481,7 +481,7 @@ footer{background:#060c09;border-top:1px solid var(--border);padding:48px 24px 2
     <div>
       <div class="footer-brand">Akilijuma.org</div>
       <p class="footer-desc" data-tr="footer_desc">Good Wisdom for Industrial Automation. AKILI IoT Platform by CrossTech Path.</p>
-      <p style="font-size:12px;color:var(--muted);margin-top:12px">Sundsvall, Sweden 🇸🇪 | Registered in France 🇫🇷</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px" data-tr="footer_location">Sundsvall, Sweden 🇸🇪 | Registered in France 🇫🇷</p>
     </div>
     <div class="footer-col">
       <h4 data-tr="footer_platform">Platform</h4>
@@ -553,6 +553,8 @@ en:{
   form_name:'Full Name',form_email:'Email',form_company:'Company / Organization',form_industry:'Industry',form_message:'Tell us about your project',form_submit:'Send Demo Request',form_success:'Thank you! We will contact you within 24 hours.',
   footer_desc:'Good Wisdom for Industrial Automation. AKILI IoT Platform by CrossTech Path.',footer_platform:'Platform',footer_resources:'Resources',footer_spec:'Specification',footer_docs:'Documentation',footer_company:'Company',footer_copy:'© 2026 CrossTech Path — Eric Fanane. All rights reserved.',footer_ip:'AKILI is IP-protected. INPI filed May 2026.'
 },
+  form_select:'Select...',
+  footer_location:'Sundsvall, Sweden 🇸🇪 | Registered in France 🇫🇷',
 fr:{
   nav_platform:'Plateforme',nav_ai:'IA',nav_hardware:'Matériel',nav_pricing:'Tarifs',nav_contact:'Contact',nav_demo:'Demander une démo',
   hero_badge:'Automatisation industrielle par IA',hero_h1:'Remplacer un <span class="accent">API à 10 000 €</span><br>par un appareil à 200 €',
@@ -591,7 +593,9 @@ fr:{
   contact_badge:'CONTACT',contact_h2:'Demander une démo en direct',contact_sub:'30 minutes. Démo en direct sur votre cas. Sans présentation. Sans engagement.',
   form_name:'Nom complet',form_email:'Email',form_company:'Entreprise / Organisation',form_industry:'Secteur',form_message:'Parlez-nous de votre projet',form_submit:'Envoyer la demande',form_success:'Merci ! Nous vous contacterons dans les 24 heures.',
   footer_desc:"Bonne Sagesse pour l'Automatisation Industrielle. Plateforme AKILI IoT par CrossTech Path.",footer_platform:'Plateforme',footer_resources:'Ressources',footer_spec:'Spécification',footer_docs:'Documentation',footer_company:'Entreprise',footer_copy:'© 2026 CrossTech Path — Eric Fanane. Tous droits réservés.',footer_ip:'AKILI est protégé par IP. INPI déposé mai 2026.'
-},
+,
+  form_select:'Sélectionner...',
+  footer_location:'Sundsvall, Suède 🇸🇪 | Enregistré en France 🇫🇷'},
 ar:{
   plan1_f1:'حتى 20 مستشعر',
   plan1_f2:'محرك القواعد + التسلسلات',
@@ -726,7 +730,9 @@ ar:{
   per_month:'/شهر',
   plan1_name:'المبتدئ',
   plan1_period:'لكل تثبيت'
-},
+,
+  form_select:'اختر...',
+  footer_location:'سوندسفال، السويد 🇸🇪 | مسجلة في فرنسا 🇫🇷'},
 sw:{
   plan1_f1:'Hadi 20 sensorer',
   plan1_f2:'Injini ya kanuni + mlolongo',
@@ -861,7 +867,9 @@ sw:{
   per_month:'/kila mwezi',
   plan1_name:'Kuanzia',
   plan1_period:'Kwa kila uongozaji'
-},
+,
+  form_select:'Chagua...',
+  footer_location:'Sundsvall, Uswidi 🇸🇪 | Iliyosajiliwa Ufaransa 🇫🇷'},
 pt:{
   plan1_f1:'Até 20 sensores',
   plan1_f2:'Motor de regras + sequências',
@@ -996,7 +1004,9 @@ pt:{
   per_month:'/mês',
   plan1_name:'Iniciante',
   plan1_period:'Por instalação'
-},
+,
+  form_select:'Selecionar...',
+  footer_location:'Sundsvall, Suécia 🇸🇪 | Registado em França 🇫🇷'},
 ha:{
   ai_sub:'AKILI ya haɗa Claude AI don hanyar sarrafa aiki ta wayo wacce ta iya koyan, tsinkaya da bayyana.',
   ai1_label:'YARJEJENIYAR AI',
@@ -1131,7 +1141,9 @@ ha:{
   feat6_desc:'Shiiga a kowane waya. Yana aiki offline. SMS da WhatsApp gargajiya',
   ai_badge:'ARTIFICIAL INTELLIGENCE',
   ai_h2:'AI wanda ke aiki don ku ta otomatik'
-},
+,
+  form_select:'Zaɓi...',
+  footer_location:'Sundsvall, Sweden 🇸🇪 | An yi rajista a Faransa 🇫🇷'},
 wo:{
   ai_sub:'AKILI jëkubulante Claude AI jëm jambuweekat ne bu gis, demngal ak dëggal.',
   ai1_label:'JËKKËR AI',
@@ -1266,7 +1278,9 @@ wo:{
   feat6_desc:'Install ci telefon bu nekk. Gis offline. SMS ak WhatsApp alerts',
   ai_badge:'ARTIFICIAL INTELLIGENCE',
   ai_h2:'AI bu gis ci sa jëm bu otomatik'
-},
+,
+  form_select:'Tann...',
+  footer_location:'Sundsvall, Suweedi 🇸🇪 | Xam-xam ci Faransi 🇫🇷'},
 dyu:{
   ai_sub:'AKILI ye claude AI ma dore fura ta ye dun, ye kanutala ati ye solosolo.',
   ai1_label:'DANNA AI',
@@ -1401,7 +1415,9 @@ dyu:{
   feat6_desc:'Install ò ǹi phone. Works offline. SMS aní WhatsApp alerts',
   ai_badge:'ARTIFICIAL INTELLIGENCE',
   ai_h2:'AI ní wà sára ọ̀ automatically'
-},
+,
+  form_select:'Sugandi...',
+  footer_location:'Sundsvall, Suede 🇸🇪 | France kɔnɔ sɛbɛnnen 🇫🇷'},
 sv:{
   ai_sub:'AKILI integrerar Claude AI för intelligent automation som lär sig, förutsäger och förklarar.',
   ai1_label:'AI REGELKAPARE',
@@ -1536,7 +1552,9 @@ sv:{
   feat6_desc:'Installera på vilken telefon som helst. Fungerar offline. SMS och WhatsApp-aviseringar',
   ai_badge:'ARTIFICIELL INTELLIGENS',
   ai_h2:'AI som fungerar för dig automatiskt'
-}
+,
+  form_select:'Välj...',
+  footer_location:'Sundsvall, Sverige 🇸🇪 | Registrerat i Frankrike 🇫🇷'}
 }
 // Page routing
 function showPage(page){

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Akilijuma — Good Wisdom for Industrial Automation</title>
+<meta name="description" content="AKILI IoT Platform — AI-powered industrial automation for Africa. Replaces €10,000 PLCs with a €200 device.">
+<style>
+:root {
+  --green:#00c896;--dark:#0a0f0d;--card:#111a16;--border:#1a2e24;
+  --text:#e8f0ec;--muted:#6b8a77;--accent:#00c896;--warn:#f1c40f;
+  --red:#e74c3c;--blue:#3498db;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--dark);color:var(--text);line-height:1.6}
+a{color:var(--green);text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,15,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:20px;font-weight:800;color:var(--green);letter-spacing:1px}
+.nav-logo span{color:var(--text);font-weight:400}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--green);color:#000;padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700}
+.nav-cta:hover{background:#00e5a8;color:#000}
+.lang-sel{background:transparent;border:1px solid var(--border);border-radius:8px;padding:4px 10px;color:var(--muted);font-size:12px;cursor:pointer;outline:none}
+.lang-sel option{background:#111}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 24px 60px;background:radial-gradient(ellipse at 50% 0%,rgba(0,200,150,.12) 0%,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.3);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:700;color:var(--green);margin-bottom:24px;letter-spacing:1px}
+.hero-badge .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.1;margin-bottom:24px}
+.hero h1 .accent{color:var(--green)}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--muted);max-width:640px;margin:0 auto 40px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#000;padding:14px 32px;border-radius:30px;font-size:15px;font-weight:700;transition:all .2s}
+.btn-primary:hover{background:#00e5a8;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,200,150,.3)}
+.btn-secondary{background:transparent;color:var(--text);padding:14px 32px;border-radius:30px;font-size:15px;font-weight:600;border:1px solid var(--border);transition:all .2s}
+.btn-secondary:hover{border-color:var(--green);color:var(--green)}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:32px;font-weight:900;color:var(--green)}
+.hero-stat .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+/* SECTION */
+section{padding:80px 24px}
+.container{max-width:1100px;margin:0 auto}
+.section-badge{display:inline-block;background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.2);border-radius:20px;padding:4px 14px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+h2{font-size:clamp(28px,4vw,44px);font-weight:800;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--muted);max-width:600px;margin-bottom:48px}
+
+/* PROBLEM */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:700px){.problem-grid{grid-template-columns:1fr}}
+.problem-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px}
+.problem-card.bad{border-color:rgba(231,76,60,.3);background:#120a0a}
+.problem-card.good{border-color:rgba(0,200,150,.3);background:#0a1510}
+.pc-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.pc-label.red{color:var(--red)}
+.pc-label.green{color:var(--green)}
+.pc-price{font-size:48px;font-weight:900;margin-bottom:8px}
+.pc-price.red{color:var(--red)}
+.pc-price.green{color:var(--green)}
+.pc-items{list-style:none;margin-top:16px}
+.pc-items li{padding:6px 0;font-size:14px;color:var(--muted);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.pc-items li:last-child{border:none}
+.pc-items li .icon{flex-shrink:0}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.feat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s}
+.feat-card:hover{border-color:rgba(0,200,150,.4)}
+.feat-icon{font-size:32px;margin-bottom:16px}
+.feat-title{font-size:16px;font-weight:700;margin-bottom:8px}
+.feat-desc{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* AI FEATURES */
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:700px){.ai-grid{grid-template-columns:1fr}}
+.ai-card{background:linear-gradient(135deg,#0a1a14,#0d2018);border:1px solid rgba(0,200,150,.2);border-radius:16px;padding:28px}
+.ai-label{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--green);margin-bottom:8px}
+.ai-title{font-size:18px;font-weight:700;margin-bottom:10px}
+.ai-example{background:#071008;border-radius:8px;padding:14px;font-size:12px;font-family:monospace;color:#7ecfa0;margin-top:14px;line-height:1.8;border:1px solid rgba(0,200,150,.1)}
+
+/* INDUSTRIES */
+.industries-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+.ind-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;transition:all .2s}
+.ind-card:hover{border-color:var(--green);transform:translateY(-4px)}
+.ind-icon{font-size:32px;margin-bottom:10px}
+.ind-name{font-size:13px;font-weight:600}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center}
+.price-card.featured{border-color:var(--green);background:linear-gradient(135deg,#0a1a14,#0d2018)}
+.price-name{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.price-amount{font-size:48px;font-weight:900;color:var(--text);margin-bottom:4px}
+.price-amount span{font-size:18px;font-weight:400;color:var(--muted)}
+.price-period{font-size:13px;color:var(--muted);margin-bottom:24px}
+.price-features{list-style:none;margin-bottom:28px;text-align:left}
+.price-features li{padding:8px 0;font-size:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.price-features li:last-child{border:none}
+.price-features .check{color:var(--green)}
+.price-btn{display:block;padding:14px;border-radius:12px;font-size:14px;font-weight:700;text-align:center;transition:all .2s}
+.price-btn.green{background:var(--green);color:#000}
+.price-btn.green:hover{background:#00e5a8}
+.price-btn.outline{border:1px solid var(--border);color:var(--text)}
+.price-btn.outline:hover{border-color:var(--green)}
+
+/* HARDWARE */
+.hw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.hw-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center}
+.hw-price{font-size:24px;font-weight:800;color:var(--green);margin:8px 0}
+.hw-name{font-size:15px;font-weight:700;margin-bottom:6px}
+.hw-desc{font-size:12px;color:var(--muted)}
+.hw-badge{display:inline-block;background:rgba(0,200,150,.1);border-radius:10px;padding:2px 10px;font-size:10px;font-weight:700;color:var(--green);margin-top:8px}
+
+/* TESTIMONIAL */
+.testimonial{background:linear-gradient(135deg,#0a1a14,#0d2018);border:1px solid rgba(0,200,150,.2);border-radius:20px;padding:48px;text-align:center;max-width:700px;margin:0 auto}
+.testimonial-text{font-size:22px;font-weight:600;line-height:1.5;margin-bottom:24px}
+.testimonial-author{font-size:14px;color:var(--muted)}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#0a1a14,#0d2018);border:1px solid rgba(0,200,150,.2);border-radius:24px;padding:64px 48px;text-align:center}
+.cta-section h2{margin-bottom:16px}
+.cta-section p{color:var(--muted);font-size:17px;margin-bottom:36px}
+
+/* FOOTER */
+footer{background:#060c09;border-top:1px solid var(--border);padding:48px 24px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1100px;margin:0 auto 40px}
+@media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr}}
+.footer-brand{font-size:20px;font-weight:800;color:var(--green);margin-bottom:12px}
+.footer-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.footer-col h4{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:var(--green)}
+.footer-bottom{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--muted)}
+
+/* CONTACT FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;margin:0 auto}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+.form-group input,.form-group select,.form-group textarea{background:#0a0f0d;border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select{-webkit-appearance:none;cursor:pointer}
+.form-submit{grid-column:1/-1;background:var(--green);color:#000;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:8px}
+.form-submit:hover{background:#00e5a8;transform:translateY(-1px)}
+
+@media(max-width:860px){
+  .nav-links{display:none}
+  .hero-stats{gap:24px}
+  .ai-grid,.problem-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .cta-section{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Akilijuma<span>.org</span></div>
+  <div class="nav-links">
+    <a href="#platform" data-tr="nav_platform">Platform</a>
+    <a href="#ai" data-tr="nav_ai">AI Features</a>
+    <a href="#hardware" data-tr="nav_hardware">Hardware</a>
+    <a href="#pricing" data-tr="nav_pricing">Pricing</a>
+    <a href="#contact" data-tr="nav_contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <select class="lang-sel" onchange="setLang(this.value)" id="lang-sel">
+      <option value="en">🇬🇧 EN</option>
+      <option value="fr">🇫🇷 FR</option>
+      <option value="ar">🇸🇦 AR</option>
+      <option value="sw">🇹🇿 SW</option>
+      <option value="pt">🇧🇷 PT</option>
+      <option value="ha">HA</option>
+      <option value="wo">WO</option>
+      <option value="dyu">DYU</option>
+      <option value="sv">🇸🇪 SV</option>
+    </select>
+    <a href="#contact" class="nav-cta" data-tr="nav_demo">Request Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge"><span class="dot"></span><span data-tr="hero_badge">AI-Powered Industrial Automation</span></div>
+    <h1 data-tr="hero_h1">Replace a <span class="accent">€10,000 PLC</span><br>with a €200 device</h1>
+    <p class="hero-sub" data-tr="hero_sub">AKILI is an open IoT platform that brings AI-powered automation to farms, clinics, cold chains and factories across Africa — at a fraction of the cost.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary" data-tr="hero_demo">Request a Live Demo</a>
+      <a href="https://github.com/ericfanane/akili-automation-language" target="_blank" class="btn-secondary" data-tr="hero_spec">View Specification</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">€200</div><div class="lbl" data-tr="stat_hardware">Hardware cost</div></div>
+      <div class="hero-stat"><div class="num">16</div><div class="lbl" data-tr="stat_modules">Industry modules</div></div>
+      <div class="hero-stat"><div class="num">9</div><div class="lbl" data-tr="stat_languages">Languages</div></div>
+      <div class="hero-stat"><div class="num">AI</div><div class="lbl" data-tr="stat_ai">Built-in Claude AI</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="platform">
+  <div class="container">
+    <div class="section-badge" data-tr="prob_badge">THE PROBLEM</div>
+    <h2 data-tr="prob_h2">Traditional PLCs are out of reach</h2>
+    <p class="section-sub" data-tr="prob_sub">Industrial automation exists — but the price makes it inaccessible for most of Africa.</p>
+    <div class="problem-grid">
+      <div class="problem-card bad">
+        <div class="pc-label red" data-tr="prob_traditional">Traditional PLC</div>
+        <div class="pc-price red">€10,000+</div>
+        <ul class="pc-items">
+          <li><span class="icon">❌</span><span data-tr="prob_t1">Requires trained PLC engineer</span></li>
+          <li><span class="icon">❌</span><span data-tr="prob_t2">Ladder diagram programming</span></li>
+          <li><span class="icon">❌</span><span data-tr="prob_t3">No AI or predictive features</span></li>
+          <li><span class="icon">❌</span><span data-tr="prob_t4">Expensive hardware proprietary</span></li>
+          <li><span class="icon">❌</span><span data-tr="prob_t5">Unavailable in rural Africa</span></li>
+        </ul>
+      </div>
+      <div class="problem-card good">
+        <div class="pc-label green">AKILI</div>
+        <div class="pc-price green">€200</div>
+        <ul class="pc-items">
+          <li><span class="icon">✅</span><span data-tr="prob_a1">Natural language rules — no engineer needed</span></li>
+          <li><span class="icon">✅</span><span data-tr="prob_a2">IF/THEN/RESET automation in plain language</span></li>
+          <li><span class="icon">✅</span><span data-tr="prob_a3">Claude AI built-in for intelligent decisions</span></li>
+          <li><span class="icon">✅</span><span data-tr="prob_a4">Runs on standard Raspberry Pi</span></li>
+          <li><span class="icon">✅</span><span data-tr="prob_a5">Works offline, anywhere in the world</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <div class="section-badge" data-tr="feat_badge">PLATFORM</div>
+    <h2 data-tr="feat_h2">Everything a PLC does, and more</h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title" data-tr="feat1_title">Rule Engine</div>
+        <div class="feat-desc" data-tr="feat1_desc">IF/THEN/RESET automation rules in plain language. No programming required. Works in 9 languages.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title" data-tr="feat2_title">Sequence Engine</div>
+        <div class="feat-desc" data-tr="feat2_desc">Multi-step process sequences (SFC). Irrigation cycles, pasteurization, cleaning protocols — all automated.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <div class="feat-title" data-tr="feat3_title">Safety Interlocks</div>
+        <div class="feat-desc" data-tr="feat3_desc">Hardware-level safety logic. FORCE OFF, FORCE ON, BLOCK, SAFE STATE and emergency stop. Cannot be overridden.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title" data-tr="feat4_title">PID Control</div>
+        <div class="feat-desc" data-tr="feat4_desc">Industrial PID loops with auto-tuning. Temperature, pH, humidity, pressure — any analog process.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📋</div>
+        <div class="feat-title" data-tr="feat5_title">Compliance Reports</div>
+        <div class="feat-desc" data-tr="feat5_desc">WHO GDP, HACCP and EU compliance reports. Auto-generated. Ready for auditors.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📱</div>
+        <div class="feat-title" data-tr="feat6_title">Mobile PWA</div>
+        <div class="feat-desc" data-tr="feat6_desc">Install on any phone. Works offline. SMS and WhatsApp alerts. No app store needed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI FEATURES -->
+<section id="ai" style="background:linear-gradient(180deg,transparent,rgba(0,200,150,.03),transparent)">
+  <div class="container">
+    <div class="section-badge" data-tr="ai_badge">ARTIFICIAL INTELLIGENCE</div>
+    <h2 data-tr="ai_h2">AI that works for you automatically</h2>
+    <p class="section-sub" data-tr="ai_sub">AKILI integrates Claude AI for intelligent automation that learns, predicts and explains.</p>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-label" data-tr="ai1_label">AI RULE CREATOR</div>
+        <div class="ai-title" data-tr="ai1_title">Describe rules in plain language</div>
+        <div class="feat-desc" data-tr="ai1_desc">Type your automation need in any language. AI generates the rule, you approve it with one click.</div>
+        <div class="ai-example">"Send SMS if cold storage<br>goes above 8°C for 2 minutes"<br><br>→ AI creates the rule automatically ✓</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-label" data-tr="ai2_label">AI AUTO-TUNER</div>
+        <div class="ai-title" data-tr="ai2_title">PID loops that tune themselves</div>
+        <div class="feat-desc" data-tr="ai2_desc">AI analyzes loop performance and adjusts Kp, Ki, Kd automatically within your safe bounds. No engineer needed.</div>
+        <div class="ai-example">Output: 97% duty cycle<br>Error: -11°C persistent<br><br>→ AI increases Kp: 1.2 → 2.5 ✓</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-label" data-tr="ai3_label">ANOMALY EXPLAINABILITY</div>
+        <div class="ai-title" data-tr="ai3_title">AI explains every alert</div>
+        <div class="feat-desc" data-tr="ai3_desc">When an alarm fires, AI analyzes all sensor context and explains what happened, why, the risk and what to do.</div>
+        <div class="ai-example">WHAT: Cold storage exceeded 8°C<br>WHY: Door left open 4 minutes<br>RISK: Products safe if corrected now<br>ACTION: Close door immediately ✓</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-label" data-tr="ai4_label">PREDICTIVE FAILURE</div>
+        <div class="ai-title" data-tr="ai4_title">Predict failures before they happen</div>
+        <div class="feat-desc" data-tr="ai4_desc">AI analyzes 7-day trends to detect degrading equipment. Get warnings days before a compressor or sensor fails.</div>
+        <div class="ai-example">Compressor cycle: 45min → 61min<br>Alert rate: accelerating 3x<br><br>→ ORANGE: failure in ~7 days ⚠</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section>
+  <div class="container">
+    <div class="section-badge" data-tr="ind_badge">INDUSTRIES</div>
+    <h2 data-tr="ind_h2">Built for every sector</h2>
+    <div class="industries-grid">
+      <div class="ind-card"><div class="ind-icon">🏥</div><div class="ind-name" data-tr="ind_healthcare">Healthcare</div></div>
+      <div class="ind-card"><div class="ind-icon">❄️</div><div class="ind-name" data-tr="ind_coldchain">Cold Chain</div></div>
+      <div class="ind-card"><div class="ind-icon">💊</div><div class="ind-name" data-tr="ind_pharmacy">Pharmacy</div></div>
+      <div class="ind-card"><div class="ind-icon">🌱</div><div class="ind-name" data-tr="ind_agriculture">Agriculture</div></div>
+      <div class="ind-card"><div class="ind-icon">🐄</div><div class="ind-name" data-tr="ind_livestock">Livestock</div></div>
+      <div class="ind-card"><div class="ind-icon">🌿</div><div class="ind-name" data-tr="ind_greenhouse">Greenhouse</div></div>
+      <div class="ind-card"><div class="ind-icon">🐟</div><div class="ind-name" data-tr="ind_aquaculture">Aquaculture</div></div>
+      <div class="ind-card"><div class="ind-icon">🚚</div><div class="ind-name" data-tr="ind_transport">Transport Cold</div></div>
+      <div class="ind-card"><div class="ind-icon">⚡</div><div class="ind-name" data-tr="ind_energy">Energy</div></div>
+      <div class="ind-card"><div class="ind-icon">💧</div><div class="ind-name" data-tr="ind_water">Water</div></div>
+      <div class="ind-card"><div class="ind-icon">🏭</div><div class="ind-name" data-tr="ind_industrial">Industrial</div></div>
+      <div class="ind-card"><div class="ind-icon">🌍</div><div class="ind-name" data-tr="ind_environment">Environment</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HARDWARE -->
+<section id="hardware">
+  <div class="container">
+    <div class="section-badge" data-tr="hw_badge">HARDWARE</div>
+    <h2 data-tr="hw_h2">Complete automation kits</h2>
+    <p class="section-sub" data-tr="hw_sub">Everything you need to deploy AKILI at your facility. Plug and play.</p>
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div style="font-size:40px;margin-bottom:12px">🖥️</div>
+        <div class="hw-name" data-tr="hw1_name">AKILI Starter Kit</div>
+        <div class="hw-price">€299</div>
+        <div class="hw-desc" data-tr="hw1_desc">Raspberry Pi 4 + relay board + temperature sensor + power supply. Ready to deploy.</div>
+        <div class="hw-badge" data-tr="hw_available">Available now</div>
+      </div>
+      <div class="hw-card">
+        <div style="font-size:40px;margin-bottom:12px">📡</div>
+        <div class="hw-name" data-tr="hw2_name">AKILI 4G Kit</div>
+        <div class="hw-price">€399</div>
+        <div class="hw-desc" data-tr="hw2_desc">Starter kit + 4G SIM module for SMS alerts anywhere. Works without WiFi.</div>
+        <div class="hw-badge" data-tr="hw_available">Available now</div>
+      </div>
+      <div class="hw-card">
+        <div style="font-size:40px;margin-bottom:12px">🌡️</div>
+        <div class="hw-name" data-tr="hw3_name">Cold Chain Kit</div>
+        <div class="hw-price">€499</div>
+        <div class="hw-desc" data-tr="hw3_desc">4G kit + 4 temperature probes + WHO GDP compliance pre-configured. For pharmacies and clinics.</div>
+        <div class="hw-badge" data-tr="hw_available">Available now</div>
+      </div>
+      <div class="hw-card">
+        <div style="font-size:40px;margin-bottom:12px">🌱</div>
+        <div class="hw-name" data-tr="hw4_name">Farm Kit</div>
+        <div class="hw-price">€599</div>
+        <div class="hw-desc" data-tr="hw4_desc">4G kit + soil sensors + relay irrigation board + weather station. For farms and greenhouses.</div>
+        <div class="hw-badge" data-tr="hw_soon">Coming soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-badge" data-tr="price_badge">PRICING</div>
+    <h2 data-tr="price_h2">Simple, transparent pricing</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name" data-tr="plan1_name">Starter</div>
+        <div class="price-amount">€30<span data-tr="per_month">/month</span></div>
+        <div class="price-period" data-tr="plan1_period">Per installation</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span><span data-tr="plan1_f1">Up to 20 sensors</span></li>
+          <li><span class="check">✓</span><span data-tr="plan1_f2">Rule engine + sequences</span></li>
+          <li><span class="check">✓</span><span data-tr="plan1_f3">Email + SMS alerts</span></li>
+          <li><span class="check">✓</span><span data-tr="plan1_f4">Basic reports</span></li>
+          <li><span class="check">✓</span><span data-tr="plan1_f5">Mobile app</span></li>
+        </ul>
+        <a href="#contact" class="price-btn outline" data-tr="btn_start">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name" data-tr="plan2_name">Professional</div>
+        <div class="price-amount">€50<span data-tr="per_month">/month</span></div>
+        <div class="price-period" data-tr="plan2_period">Per installation — most popular</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span><span data-tr="plan2_f1">Unlimited sensors</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f2">All automation features</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f3">AI Advisor + Auto-Tuner</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f4">Predictive failure detection</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f5">WHO/HACCP compliance reports</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f6">WhatsApp alerts</span></li>
+          <li><span class="check">✓</span><span data-tr="plan2_f7">Client portal access</span></li>
+        </ul>
+        <a href="#contact" class="price-btn green" data-tr="btn_demo">Request Demo</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name" data-tr="plan3_name">Enterprise</div>
+        <div class="price-amount" data-tr="plan3_price">Custom</div>
+        <div class="price-period" data-tr="plan3_period">Multi-site deployments</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span><span data-tr="plan3_f1">Unlimited installations</span></li>
+          <li><span class="check">✓</span><span data-tr="plan3_f2">Custom modules</span></li>
+          <li><span class="check">✓</span><span data-tr="plan3_f3">On-site installation</span></li>
+          <li><span class="check">✓</span><span data-tr="plan3_f4">Dedicated support</span></li>
+          <li><span class="check">✓</span><span data-tr="plan3_f5">Staff training included</span></li>
+        </ul>
+        <a href="#contact" class="price-btn outline" data-tr="btn_contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container" style="text-align:center">
+    <div class="section-badge" data-tr="contact_badge">CONTACT</div>
+    <h2 data-tr="contact_h2">Request a live demo</h2>
+    <p class="section-sub" style="margin:0 auto 40px" data-tr="contact_sub">30 minutes. Live demo on your use case. No slides. No commitment.</p>
+    <form class="form-grid" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label data-tr="form_name">Full Name</label>
+        <input type="text" id="f-name" required>
+      </div>
+      <div class="form-group">
+        <label data-tr="form_email">Email</label>
+        <input type="email" id="f-email" required>
+      </div>
+      <div class="form-group">
+        <label data-tr="form_company">Company / Organization</label>
+        <input type="text" id="f-company">
+      </div>
+      <div class="form-group">
+        <label data-tr="form_industry">Industry</label>
+        <select id="f-industry">
+          <option value="">Select...</option>
+          <option value="healthcare" data-tr="ind_healthcare">Healthcare</option>
+          <option value="coldchain" data-tr="ind_coldchain">Cold Chain</option>
+          <option value="pharmacy" data-tr="ind_pharmacy">Pharmacy</option>
+          <option value="agriculture" data-tr="ind_agriculture">Agriculture</option>
+          <option value="livestock" data-tr="ind_livestock">Livestock</option>
+          <option value="greenhouse" data-tr="ind_greenhouse">Greenhouse</option>
+          <option value="industrial" data-tr="ind_industrial">Industrial</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label data-tr="form_message">Tell us about your project</label>
+        <textarea id="f-message" placeholder="What do you want to automate? Where are you located?"></textarea>
+      </div>
+      <button type="submit" class="form-submit" data-tr="form_submit">Send Demo Request</button>
+    </form>
+    <div id="form-success" style="display:none;background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.3);border-radius:12px;padding:20px;margin-top:20px;color:var(--green);font-weight:600" data-tr="form_success">
+      Thank you! We will contact you within 24 hours.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Akilijuma.org</div>
+      <p class="footer-desc" data-tr="footer_desc">Good Wisdom for Industrial Automation. AKILI IoT Platform by CrossTech Path.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">Sundsvall, Sweden 🇸🇪 | Registered in France 🇫🇷</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-tr="footer_platform">Platform</h4>
+      <a href="#platform" data-tr="nav_platform">Features</a>
+      <a href="#ai" data-tr="nav_ai">AI Features</a>
+      <a href="#hardware" data-tr="nav_hardware">Hardware</a>
+      <a href="#pricing" data-tr="nav_pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-tr="footer_resources">Resources</h4>
+      <a href="https://github.com/ericfanane/akili-automation-language" target="_blank">GitHub</a>
+      <a href="https://github.com/ericfanane/akili-automation-language/blob/main/SPECIFICATION.md" target="_blank" data-tr="footer_spec">AAL Specification</a>
+      <a href="#" data-tr="footer_docs">Documentation</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-tr="footer_company">Company</h4>
+      <a href="#contact" data-tr="nav_contact">Contact</a>
+      <a href="https://linkedin.com/in/ericfanane" target="_blank">LinkedIn</a>
+      <a href="mailto:eric.fanane@hotmail.com">eric.fanane@hotmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-tr="footer_copy">© 2026 CrossTech Path — Eric Fanane. All rights reserved.</p>
+    <p data-tr="footer_ip">AKILI Automation Language is IP-protected. INPI Enveloppe Soleau filed May 2026.</p>
+  </div>
+</footer>
+
+<script>
+// ── TRANSLATIONS ──────────────────────────────────────────────────────────────
+var TR = {
+en:{
+  nav_platform:'Platform',nav_ai:'AI Features',nav_hardware:'Hardware',nav_pricing:'Pricing',nav_contact:'Contact',nav_demo:'Request Demo',
+  hero_badge:'AI-Powered Industrial Automation',hero_h1:'Replace a <span class="accent">€10,000 PLC</span><br>with a €200 device',
+  hero_sub:'AKILI is an open IoT platform that brings AI-powered automation to farms, clinics, cold chains and factories across Africa — at a fraction of the cost.',
+  hero_demo:'Request a Live Demo',hero_spec:'View Specification',
+  stat_hardware:'Hardware cost',stat_modules:'Industry modules',stat_languages:'Languages',stat_ai:'Built-in Claude AI',
+  prob_badge:'THE PROBLEM',prob_h2:'Traditional PLCs are out of reach',prob_sub:'Industrial automation exists — but the price makes it inaccessible for most of Africa.',
+  prob_traditional:'Traditional PLC',prob_t1:'Requires trained PLC engineer',prob_t2:'Ladder diagram programming',prob_t3:'No AI or predictive features',prob_t4:'Expensive proprietary hardware',prob_t5:'Unavailable in rural Africa',
+  prob_a1:'Natural language rules — no engineer needed',prob_a2:'IF/THEN/RESET automation in plain language',prob_a3:'Claude AI built-in for intelligent decisions',prob_a4:'Runs on standard Raspberry Pi',prob_a5:'Works offline, anywhere in the world',
+  feat_badge:'PLATFORM',feat_h2:'Everything a PLC does, and more',
+  feat1_title:'Rule Engine',feat1_desc:'IF/THEN/RESET automation rules in plain language. No programming required. Works in 9 languages.',
+  feat2_title:'Sequence Engine',feat2_desc:'Multi-step process sequences (SFC). Irrigation cycles, pasteurization, cleaning protocols — all automated.',
+  feat3_title:'Safety Interlocks',feat3_desc:'Hardware-level safety logic. FORCE OFF, FORCE ON, BLOCK, SAFE STATE and emergency stop.',
+  feat4_title:'PID Control',feat4_desc:'Industrial PID loops with AI auto-tuning. Temperature, pH, humidity, pressure — any analog process.',
+  feat5_title:'Compliance Reports',feat5_desc:'WHO GDP, HACCP and EU compliance reports. Auto-generated. Ready for auditors.',
+  feat6_title:'Mobile PWA',feat6_desc:'Install on any phone. Works offline. SMS and WhatsApp alerts. No app store needed.',
+  ai_badge:'ARTIFICIAL INTELLIGENCE',ai_h2:'AI that works for you automatically',ai_sub:'AKILI integrates Claude AI for intelligent automation that learns, predicts and explains.',
+  ai1_label:'AI RULE CREATOR',ai1_title:'Describe rules in plain language',ai1_desc:'Type your automation need in any language. AI generates the rule, you approve it.',
+  ai2_label:'AI AUTO-TUNER',ai2_title:'PID loops that tune themselves',ai2_desc:'AI adjusts Kp, Ki, Kd automatically within your safe bounds. No engineer needed.',
+  ai3_label:'ANOMALY EXPLAINABILITY',ai3_title:'AI explains every alert',ai3_desc:'When an alarm fires, AI explains what happened, why, the risk and what to do now.',
+  ai4_label:'PREDICTIVE FAILURE',ai4_title:'Predict failures before they happen',ai4_desc:'AI analyzes 7-day trends to detect degrading equipment before it breaks.',
+  ind_badge:'INDUSTRIES',ind_h2:'Built for every sector',
+  ind_healthcare:'Healthcare',ind_coldchain:'Cold Chain',ind_pharmacy:'Pharmacy',ind_agriculture:'Agriculture',ind_livestock:'Livestock',ind_greenhouse:'Greenhouse',ind_aquaculture:'Aquaculture',ind_transport:'Transport Cold',ind_energy:'Energy',ind_water:'Water',ind_industrial:'Industrial',ind_environment:'Environment',
+  hw_badge:'HARDWARE',hw_h2:'Complete automation kits',hw_sub:'Everything you need to deploy AKILI at your facility.',
+  hw1_name:'AKILI Starter Kit',hw1_desc:'Raspberry Pi 4 + relay board + temperature sensor + power supply.',
+  hw2_name:'AKILI 4G Kit',hw2_desc:'Starter kit + 4G SIM module for SMS alerts anywhere.',
+  hw3_name:'Cold Chain Kit',hw3_desc:'4G kit + 4 temperature probes + WHO GDP compliance pre-configured.',
+  hw4_name:'Farm Kit',hw4_desc:'4G kit + soil sensors + relay irrigation board + weather station.',
+  hw_available:'Available now',hw_soon:'Coming soon',
+  price_badge:'PRICING',price_h2:'Simple, transparent pricing',
+  per_month:'/month',
+  plan1_name:'Starter',plan1_period:'Per installation',plan1_f1:'Up to 20 sensors',plan1_f2:'Rule engine + sequences',plan1_f3:'Email + SMS alerts',plan1_f4:'Basic reports',plan1_f5:'Mobile app',
+  plan2_name:'Professional',plan2_period:'Per installation — most popular',plan2_f1:'Unlimited sensors',plan2_f2:'All automation features',plan2_f3:'AI Advisor + Auto-Tuner',plan2_f4:'Predictive failure detection',plan2_f5:'WHO/HACCP compliance reports',plan2_f6:'WhatsApp alerts',plan2_f7:'Client portal access',
+  plan3_name:'Enterprise',plan3_price:'Custom',plan3_period:'Multi-site deployments',plan3_f1:'Unlimited installations',plan3_f2:'Custom modules',plan3_f3:'On-site installation',plan3_f4:'Dedicated support',plan3_f5:'Staff training included',
+  btn_start:'Get Started',btn_demo:'Request Demo',btn_contact:'Contact Us',
+  contact_badge:'CONTACT',contact_h2:'Request a live demo',contact_sub:'30 minutes. Live demo on your use case. No slides. No commitment.',
+  form_name:'Full Name',form_email:'Email',form_company:'Company / Organization',form_industry:'Industry',form_message:'Tell us about your project',form_submit:'Send Demo Request',form_success:'Thank you! We will contact you within 24 hours.',
+  footer_desc:'Good Wisdom for Industrial Automation. AKILI IoT Platform by CrossTech Path.',footer_platform:'Platform',footer_resources:'Resources',footer_spec:'Specification',footer_docs:'Documentation',footer_company:'Company',footer_copy:'© 2026 CrossTech Path — Eric Fanane. All rights reserved.',footer_ip:'AKILI is IP-protected. INPI filed May 2026.'
+},
+fr:{
+  nav_platform:'Plateforme',nav_ai:'IA',nav_hardware:'Matériel',nav_pricing:'Tarifs',nav_contact:'Contact',nav_demo:'Demander une démo',
+  hero_badge:'Automatisation industrielle par IA',hero_h1:'Remplacer un <span class="accent">API à 10 000 €</span><br>par un appareil à 200 €',
+  hero_sub:"AKILI est une plateforme IoT open qui apporte l'automatisation intelligente aux fermes, cliniques et chaînes du froid en Afrique.",
+  hero_demo:'Demander une démo',hero_spec:'Voir la spécification',
+  stat_hardware:'Coût matériel',stat_modules:'Modules sectoriels',stat_languages:'Langues',stat_ai:'IA Claude intégrée',
+  prob_badge:'LE PROBLÈME',prob_h2:'Les API traditionnels sont hors de portée',prob_sub:"L'automatisation industrielle existe — mais le prix la rend inaccessible pour la plupart de l'Afrique.",
+  prob_traditional:'API traditionnel',prob_t1:'Nécessite un ingénieur PLC formé',prob_t2:'Programmation en langage ladder',prob_t3:'Pas de fonctionnalités IA',prob_t4:'Matériel propriétaire coûteux',prob_t5:'Indisponible en Afrique rurale',
+  prob_a1:'Règles en langage naturel — sans ingénieur',prob_a2:'Automatisation SI/ALORS/RESET en langage clair',prob_a3:'IA Claude intégrée pour des décisions intelligentes',prob_a4:'Fonctionne sur Raspberry Pi standard',prob_a5:'Fonctionne hors ligne, partout dans le monde',
+  feat_badge:'PLATEFORME',feat_h2:'Tout ce que fait un API, et plus encore',
+  feat1_title:'Moteur de règles',feat1_desc:'Règles SI/ALORS/RESET en langage clair. Sans programmation. En 9 langues.',
+  feat2_title:'Moteur de séquences',feat2_desc:'Séquences multi-étapes (SFC). Cycles irrigation, pasteurisation, nettoyage.',
+  feat3_title:'Verrouillages de sécurité',feat3_desc:'Logique de sécurité matérielle. FORÇAGE, BLOCAGE, ÉTAT SÛR, arrêt urgence.',
+  feat4_title:'Contrôle PID',feat4_desc:'Boucles PID industrielles avec auto-tuning IA. Température, pH, humidité.',
+  feat5_title:'Rapports de conformité',feat5_desc:'Rapports WHO GDP, HACCP et UE. Générés automatiquement.',
+  feat6_title:'Application mobile PWA',feat6_desc:"Installez sur n'importe quel téléphone. Fonctionne hors ligne. Alertes SMS et WhatsApp.",
+  ai_badge:'INTELLIGENCE ARTIFICIELLE',ai_h2:'Une IA qui travaille pour vous automatiquement',ai_sub:'AKILI intègre Claude IA pour une automatisation intelligente qui apprend, prédit et explique.',
+  ai1_label:'CRÉATEUR DE RÈGLES IA',ai1_title:'Décrivez les règles en langage naturel',ai1_desc:"Tapez votre besoin en n'importe quelle langue. L'IA génère la règle, vous l'approuvez.",
+  ai2_label:'AUTO-TUNING IA',ai2_title:'Boucles PID qui se règlent elles-mêmes',ai2_desc:"L'IA ajuste Kp, Ki, Kd automatiquement dans vos limites de sécurité.",
+  ai3_label:'EXPLICATION DES ANOMALIES',ai3_title:"L'IA explique chaque alarme",ai3_desc:"Quand une alarme se déclenche, l'IA explique quoi, pourquoi, le risque et l'action.",
+  ai4_label:'DÉTECTION PRÉDICTIVE',ai4_title:'Prédire les pannes avant qu\'elles arrivent',ai4_desc:"L'IA analyse les tendances sur 7 jours pour détecter les équipements qui se dégradent.",
+  ind_badge:'SECTEURS',ind_h2:'Conçu pour tous les secteurs',
+  ind_healthcare:'Santé',ind_coldchain:'Chaîne du froid',ind_pharmacy:'Pharmacie',ind_agriculture:'Agriculture',ind_livestock:'Élevage',ind_greenhouse:'Serre',ind_aquaculture:'Aquaculture',ind_transport:'Transport froid',ind_energy:'Énergie',ind_water:'Eau',ind_industrial:'Industrie',ind_environment:'Environnement',
+  hw_badge:'MATÉRIEL',hw_h2:'Kits d\'automatisation complets',hw_sub:'Tout ce dont vous avez besoin pour déployer AKILI dans votre installation.',
+  hw1_name:'Kit Starter AKILI',hw1_desc:'Raspberry Pi 4 + carte relais + capteur température + alimentation.',
+  hw2_name:'Kit AKILI 4G',hw2_desc:'Kit Starter + module SIM 4G pour alertes SMS partout.',
+  hw3_name:'Kit Chaîne du froid',hw3_desc:'Kit 4G + 4 sondes température + conformité WHO GDP pré-configurée.',
+  hw4_name:'Kit Ferme',hw4_desc:'Kit 4G + capteurs sol + carte relais irrigation + station météo.',
+  hw_available:'Disponible',hw_soon:'Bientôt',
+  price_badge:'TARIFS',price_h2:'Tarification simple et transparente',
+  per_month:'/mois',
+  plan1_name:'Starter',plan1_period:'Par installation',plan1_f1:"Jusqu'à 20 capteurs",plan1_f2:'Moteur de règles + séquences',plan1_f3:'Alertes email + SMS',plan1_f4:'Rapports de base',plan1_f5:'Application mobile',
+  plan2_name:'Professionnel',plan2_period:'Par installation — le plus populaire',plan2_f1:'Capteurs illimités',plan2_f2:'Toutes les fonctions automatisation',plan2_f3:'IA Advisor + Auto-Tuner',plan2_f4:'Détection prédictive des pannes',plan2_f5:'Rapports WHO/HACCP',plan2_f6:'Alertes WhatsApp',plan2_f7:'Accès portail client',
+  plan3_name:'Entreprise',plan3_price:'Sur mesure',plan3_period:'Déploiements multi-sites',plan3_f1:'Installations illimitées',plan3_f2:'Modules personnalisés',plan3_f3:'Installation sur site',plan3_f4:'Support dédié',plan3_f5:'Formation du personnel incluse',
+  btn_start:'Commencer',btn_demo:'Demander une démo',btn_contact:'Nous contacter',
+  contact_badge:'CONTACT',contact_h2:'Demander une démo en direct',contact_sub:'30 minutes. Démo en direct sur votre cas. Sans présentation. Sans engagement.',
+  form_name:'Nom complet',form_email:'Email',form_company:'Entreprise / Organisation',form_industry:'Secteur',form_message:'Parlez-nous de votre projet',form_submit:'Envoyer la demande',form_success:'Merci ! Nous vous contacterons dans les 24 heures.',
+  footer_desc:"Bonne Sagesse pour l'Automatisation Industrielle. Plateforme AKILI IoT par CrossTech Path.",footer_platform:'Plateforme',footer_resources:'Ressources',footer_spec:'Spécification',footer_docs:'Documentation',footer_company:'Entreprise',footer_copy:'© 2026 CrossTech Path — Eric Fanane. Tous droits réservés.',footer_ip:'AKILI est protégé par IP. INPI déposé mai 2026.'
+}
+};
+// Add other languages as copies of en with key phrases translated
+['ar','sw','pt','ha','wo','dyu','sv'].forEach(function(l){ TR[l] = Object.assign({},TR.en); });
+TR.sv.nav_demo='Begär demo'; TR.sv.hero_demo='Begär en livdemo'; TR.sv.hero_sub='AKILI är en öppen IoT-plattform som ger AI-driven automatisering till gårdar, kliniker och kylkedjor i Afrika.';
+TR.sw.nav_demo='Omba maonyesho'; TR.sw.hero_demo='Omba Maonyesho ya Moja kwa Moja';
+TR.ar.nav_demo='طلب عرض توضيحي'; TR.ar.hero_demo='اطلب عرضاً توضيحياً مباشراً';
+TR.ha.nav_demo='Nemi nuni'; TR.wo.nav_demo='Dëmandeel demo'; TR.dyu.nav_demo='Demo dɔn';
+
+var LANG = localStorage.getItem('lang') || 'en';
+
+function setLang(l){
+  LANG = l;
+  localStorage.setItem('lang', l);
+  applyLang();
+}
+
+function applyLang(){
+  var t = TR[LANG] || TR.en;
+  document.querySelectorAll('[data-tr]').forEach(function(el){
+    var k = el.getAttribute('data-tr');
+    if(t[k] !== undefined){
+      if(k === 'hero_h1') el.innerHTML = t[k];
+      else el.textContent = t[k];
+    }
+  });
+  document.getElementById('lang-sel').value = LANG;
+  document.documentElement.lang = LANG;
+  if(LANG === 'ar') document.body.style.direction = 'rtl';
+  else document.body.style.direction = 'ltr';
+}
+
+function submitForm(e){
+  e.preventDefault();
+  var name = document.getElementById('f-name').value;
+  var email = document.getElementById('f-email').value;
+  var company = document.getElementById('f-company').value;
+  var industry = document.getElementById('f-industry').value;
+  var message = document.getElementById('f-message').value;
+  // In production, this would POST to a backend
+  // For now, open email client
+  var subject = encodeURIComponent('AKILI Demo Request — ' + name);
+  var body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Email: ' + email + '\n' +
+    'Company: ' + company + '\n' +
+    'Industry: ' + industry + '\n\n' +
+    'Message:\n' + message
+  );
+  window.location.href = 'mailto:eric.fanane@hotmail.com?subject=' + subject + '&body=' + body;
+  document.getElementById('form-success').style.display = 'block';
+  e.target.reset();
+}
+
+// Init
+applyLang();
+</script>
+</body>
+</html>

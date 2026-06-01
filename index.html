@@ -501,6 +501,8 @@ footer{background:#060c09;border-top:1px solid var(--border);padding:48px 24px 2
       <a href="#contact" data-tr="nav_contact">Contact</a>
       <a href="https://linkedin.com/in/ericfanane" target="_blank">LinkedIn</a>
       <a href="mailto:eric.fanane@hotmail.com">eric.fanane@hotmail.com</a>
+      <a href="#" onclick="showPage('tos')" data-tr="footer_tos">Terms of Service</a>
+      <a href="#" onclick="showPage('privacy')" data-tr="footer_privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -593,6 +595,10 @@ fr:{
 };
 // Add other languages as copies of en with key phrases translated
 ['ar','sw','pt','ha','wo','dyu','sv'].forEach(function(l){ TR[l] = Object.assign({},TR.en); });
+TR.en.footer_tos='Terms of Service'; TR.en.footer_privacy='Privacy Policy';
+TR.fr.footer_tos='Conditions d\'utilisation'; TR.fr.footer_privacy='Politique de confidentialité';
+TR.sv.footer_tos='Användarvillkor'; TR.sv.footer_privacy='Integritetspolicy';
+['ar','sw','pt','ha','wo','dyu'].forEach(function(l){ TR[l].footer_tos='Terms of Service'; TR[l].footer_privacy='Privacy Policy'; });
 TR.sv.nav_demo='Begär demo'; TR.sv.hero_demo='Begär en livdemo'; TR.sv.hero_sub='AKILI är en öppen IoT-plattform som ger AI-driven automatisering till gårdar, kliniker och kylkedjor i Afrika.';
 TR.sw.nav_demo='Omba maonyesho'; TR.sw.hero_demo='Omba Maonyesho ya Moja kwa Moja';
 TR.ar.nav_demo='طلب عرض توضيحي'; TR.ar.hero_demo='اطلب عرضاً توضيحياً مباشراً';
@@ -643,8 +649,153 @@ function submitForm(e){
   e.target.reset();
 }
 
+// Page routing
+function showPage(page){
+  document.querySelectorAll('nav, section, footer, #tos-page, #privacy-page').forEach(function(el){
+    el.style.display = '';
+  });
+  if(page === 'tos'){
+    document.querySelectorAll('nav ~ *, footer').forEach(function(el){ el.style.display='none'; });
+    document.getElementById('tos-page').style.display = 'block';
+    window.scrollTo(0,0);
+  } else if(page === 'privacy'){
+    document.querySelectorAll('nav ~ *, footer').forEach(function(el){ el.style.display='none'; });
+    document.getElementById('privacy-page').style.display = 'block';
+    window.scrollTo(0,0);
+  }
+}
+
+// Handle hash on load
+if(window.location.hash === '#tos') showPage('tos');
+if(window.location.hash === '#privacy') showPage('privacy');
+
 // Init
 applyLang();
 </script>
+
+<!-- TERMS OF SERVICE PAGE -->
+<div id="tos-page" style="display:none;max-width:800px;margin:80px auto;padding:24px">
+  <a href="/" style="color:var(--green);font-size:13px;display:block;margin-bottom:24px">← Back to akilijuma.org</a>
+  <h1 style="font-size:32px;font-weight:900;margin-bottom:8px">Terms of Service</h1>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:40px">Last updated: June 2026 — CrossTech Path</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">1. Acceptance</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">By accessing www.akilijuma.org or using the AKILI IoT Platform ("the Service"), you agree to be bound by these Terms of Service. If you do not agree, do not use the Service.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">2. The Service</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">CrossTech Path provides the AKILI IoT Platform, an industrial automation software platform running on Raspberry Pi hardware. The Service includes automation rules, PID control, alarm management, AI features, and compliance reporting.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">3. Subscription and Payment</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">Access to the Service requires a paid subscription as described in the applicable Service Agreement. Subscriptions are billed monthly in advance. Failure to pay within 30 days may result in suspension of access.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">4. Intellectual Property</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">The AKILI Platform, the AKILI Automation Language (AAL), all software, algorithms, and documentation are the exclusive intellectual property of CrossTech Path / Eric Fanane, protected under INPI registration (May 2026) and applicable copyright law. You receive a non-exclusive, non-transferable license to use the Service during your subscription. You may not copy, modify, reverse engineer, or resell the Service.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">5. Your Data</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">All operational data collected by AKILI (sensor readings, alerts, configurations) belongs to you. Data is stored locally on your hardware. CrossTech Path does not access your operational data without your explicit written consent.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">6. AI Features</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">AI features (AI Advisor, AI Rule Creator, Anomaly Explainability, Predictive Failure Detection) use the Anthropic Claude API. Anonymized operational data (sensor values, alert summaries) is sent to Anthropic for processing. No personally identifiable information is transmitted. You are responsible for managing your own Anthropic API key and associated costs.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">7. Safety</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px"><strong style="color:var(--text)">AKILI must not be used as the sole safety system for applications where failure could result in injury, death, or significant environmental damage.</strong> Safety-critical applications must have independent hardware safety systems. CrossTech Path accepts no liability for losses arising from reliance on AKILI as a sole safety mechanism.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">8. Limitation of Liability</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">CrossTech Path's liability is limited to subscription fees paid in the 3 months preceding any claim. CrossTech Path is not liable for indirect losses, data loss, hardware failures outside its control, or losses from incorrect user configuration.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">9. Termination</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">Either party may terminate the subscription with 30 days written notice. CrossTech Path may terminate immediately for material breach or non-payment. Upon termination, your data remains available for export for 30 days.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">10. Governing Law</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">These Terms are governed by French law. CrossTech Path is registered in France. Disputes shall be resolved first by negotiation, then by the competent courts of France.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">11. Changes</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:40px">CrossTech Path may update these Terms with 30 days notice. Continued use of the Service after notice constitutes acceptance.</p>
+
+  <p style="color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:20px">Contact: eric.fanane@hotmail.com — CrossTech Path, Sundsvall, Sweden</p>
+</div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div id="privacy-page" style="display:none;max-width:800px;margin:80px auto;padding:24px">
+  <a href="/" style="color:var(--green);font-size:13px;display:block;margin-bottom:24px">← Back to akilijuma.org</a>
+  <h1 style="font-size:32px;font-weight:900;margin-bottom:8px">Privacy Policy</h1>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:40px">Last updated: June 2026 — CrossTech Path — GDPR compliant</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">1. Who We Are</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">CrossTech Path, operated by Eric Fanane, Sundsvall, Sweden. Email: eric.fanane@hotmail.com. We are the data controller for personal data collected through www.akilijuma.org.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">2. Data We Collect</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:8px"><strong style="color:var(--text)">Through the website contact form:</strong></p>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li>Full name</li>
+    <li>Email address</li>
+    <li>Company name</li>
+    <li>Industry sector</li>
+    <li>Message content</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:8px"><strong style="color:var(--text)">Through the AKILI Platform (operational data — not personal):</strong></p>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li>Sensor readings (temperature, humidity, etc.)</li>
+    <li>Automation rule configurations</li>
+    <li>Alert history</li>
+    <li>System logs</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px"><strong style="color:var(--text)">We do not collect:</strong> Payment card details (handled by payment processor), browsing history, or tracking cookies.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">3. How We Use Your Data</h2>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li>To respond to demo requests and inquiries</li>
+    <li>To provide and support the AKILI Platform service</li>
+    <li>To send service-related communications (invoices, updates)</li>
+    <li>To comply with legal obligations</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">We do not sell your data. We do not use your data for advertising.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">4. Legal Basis (GDPR)</h2>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li><strong style="color:var(--text)">Contract</strong> — processing necessary to provide the Service</li>
+    <li><strong style="color:var(--text)">Legitimate interest</strong> — responding to inquiries</li>
+    <li><strong style="color:var(--text)">Legal obligation</strong> — tax records, invoices</li>
+  </ul>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">5. Data Sharing</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">We share data only with:</p>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li><strong style="color:var(--text)">Anthropic</strong> — anonymized operational data for AI features (no personal data)</li>
+    <li><strong style="color:var(--text)">Legal authorities</strong> — when required by law</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">We do not share personal data with third parties for marketing.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">6. Data Retention</h2>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li>Contact form data: retained for 2 years or until you request deletion</li>
+    <li>Client operational data: retained during subscription + 30 days after termination</li>
+    <li>Invoice records: retained 7 years (legal obligation)</li>
+  </ul>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">7. Your Rights (GDPR)</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:8px">You have the right to:</p>
+  <ul style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px;padding-left:24px">
+    <li><strong style="color:var(--text)">Access</strong> — request a copy of your data</li>
+    <li><strong style="color:var(--text)">Rectification</strong> — correct inaccurate data</li>
+    <li><strong style="color:var(--text)">Erasure</strong> — request deletion of your data</li>
+    <li><strong style="color:var(--text)">Portability</strong> — receive your data in a portable format</li>
+    <li><strong style="color:var(--text)">Object</strong> — object to processing based on legitimate interest</li>
+  </ul>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">To exercise any right, email: eric.fanane@hotmail.com. We will respond within 30 days.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">8. Cookies</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">This website uses one functional cookie to remember your language preference. No tracking cookies. No advertising cookies. No third-party analytics.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">9. Security</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">All communications use HTTPS encryption. Operational data is stored locally on your hardware and never transmitted to CrossTech Path servers without consent.</p>
+
+  <h2 style="font-size:18px;font-weight:700;color:var(--green);margin:28px 0 10px">10. Contact and Complaints</h2>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:16px">Data controller: Eric Fanane, eric.fanane@hotmail.com</p>
+  <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:40px">If you believe your rights have been violated, you may lodge a complaint with the French data protection authority (CNIL): www.cnil.fr, or the Swedish authority (IMY): www.imy.se.</p>
+
+  <p style="color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:20px">CrossTech Path — www.akilijuma.org — eric.fanane@hotmail.com</p>
+</div>
+
 </body>
 </html>

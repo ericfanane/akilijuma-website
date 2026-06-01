@@ -629,17 +629,33 @@ function applyLang(){
 
 function submitForm(e){
   e.preventDefault();
-  var btn = e.target.querySelector('.form-submit');
-  var origText = btn.textContent;
+  var form    = e.target;
+  var btn     = form.querySelector('.form-submit');
+  var success = document.getElementById('form-success');
+  var origText= btn.textContent;
+
+  // Hide previous success message
+  success.style.display = 'none';
+
+  // Validate
+  var name    = document.getElementById('f-name').value.trim();
+  var email   = document.getElementById('f-email').value.trim();
+  var message = document.getElementById('f-message').value.trim();
+  if(!name || !email || !message){
+    alert('Please fill in your name, email and message.');
+    return;
+  }
+
+  // Show sending state
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
   var data = {
-    name:       document.getElementById('f-name').value,
-    email:      document.getElementById('f-email').value,
-    company:    document.getElementById('f-company').value,
-    industry:   document.getElementById('f-industry').value,
-    message:    document.getElementById('f-message').value
+    name:     name,
+    email:    email,
+    company:  document.getElementById('f-company').value.trim(),
+    industry: document.getElementById('f-industry').value,
+    message:  message
   };
 
   fetch('https://formspree.io/f/mjgzqpjr', {
@@ -647,23 +663,24 @@ function submitForm(e){
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(data)
   })
-  .then(function(r){ return r.json(); })
-  .then(function(d){
-    btn.textContent = origText;
-    btn.disabled = false;
-    if(d.ok || d.next){
-      document.getElementById('form-success').style.display = 'block';
-      e.target.reset();
-    } else {
-      alert('Error sending. Please email us directly at info@akilijuma.org');
-    }
+  .then(function(r){
+    if(!r.ok) throw new Error('Server error ' + r.status);
+    return r.json();
   })
-  .catch(function(){
+  .then(function(d){
+    // SUCCESS — confirmed by Formspree
     btn.textContent = origText;
     btn.disabled = false;
-    // Fallback to mailto
+    form.reset();
+    success.style.display = 'block';
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  })
+  .catch(function(err){
+    // FAIL — show error, fallback to mailto
+    btn.textContent = origText;
+    btn.disabled = false;
     var subject = encodeURIComponent('AKILI Demo Request — ' + data.name);
-    var body = encodeURIComponent('Name: '+data.name+'\nEmail: '+data.email+'\nCompany: '+data.company+'\nIndustry: '+data.industry+'\n\nMessage:\n'+data.message);
+    var body    = encodeURIComponent('Name: '+data.name+'\nEmail: '+data.email+'\nCompany: '+data.company+'\nIndustry: '+data.industry+'\n\nMessage:\n'+data.message);
     window.location.href = 'mailto:info@akilijuma.org?subject='+subject+'&body='+body;
   });
 }

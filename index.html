@@ -651,23 +651,35 @@ function submitForm(e){
 
 // Page routing
 function showPage(page){
-  document.querySelectorAll('nav, section, footer, #tos-page, #privacy-page').forEach(function(el){
-    el.style.display = '';
-  });
+  // Hide all page divs first
+  var allEls = document.querySelectorAll('body > *');
+  var tosEl = document.getElementById('tos-page');
+  var privEl = document.getElementById('privacy-page');
   if(page === 'tos'){
-    document.querySelectorAll('nav ~ *, footer').forEach(function(el){ el.style.display='none'; });
-    document.getElementById('tos-page').style.display = 'block';
+    document.querySelectorAll('nav, section, footer').forEach(function(el){ el.style.display='none'; });
+    if(tosEl){ tosEl.style.display='block'; }
+    if(privEl){ privEl.style.display='none'; }
     window.scrollTo(0,0);
   } else if(page === 'privacy'){
-    document.querySelectorAll('nav ~ *, footer').forEach(function(el){ el.style.display='none'; });
-    document.getElementById('privacy-page').style.display = 'block';
+    document.querySelectorAll('nav, section, footer').forEach(function(el){ el.style.display='none'; });
+    if(tosEl){ tosEl.style.display='none'; }
+    if(privEl){ privEl.style.display='block'; }
     window.scrollTo(0,0);
+  } else {
+    document.querySelectorAll('nav, section, footer').forEach(function(el){ el.style.display=''; });
+    if(tosEl){ tosEl.style.display='none'; }
+    if(privEl){ privEl.style.display='none'; }
   }
 }
 
 // Handle hash on load
-if(window.location.hash === '#tos') showPage('tos');
-if(window.location.hash === '#privacy') showPage('privacy');
+function checkHash(){
+  if(window.location.hash === '#tos') showPage('tos');
+  else if(window.location.hash === '#privacy') showPage('privacy');
+  else showPage('home');
+}
+window.addEventListener('hashchange', checkHash);
+checkHash();
 
 // Init
 applyLang();

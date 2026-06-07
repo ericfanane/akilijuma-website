@@ -6,7 +6,7 @@
 <meta name="description" content="CrossTech Path — Formation en automatisation industrielle et AKILI Platform IoT pour l'Afrique du Sahel">
 <title>AKILI JUMA — Automatise ton Sahel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -14,15 +14,11 @@ html{scroll-behavior:smooth}
   --green:#0f6e56;--green-dark:#085041;--green-light:#e1f5ee;
   --dark:#0d1117;--dark2:#1a1a2e;--text:#1a1a2e;--sub:#6b7280;
   --border:#e5e7eb;--white:#ffffff;--accent:#2ecc71;
-  --orange:#f59e0b;--blue:#3b82f6;--radius:12px;
+  --orange:#f59e0b;--radius:12px;
 }
 body{font-family:'Inter',sans-serif;background:#f9fafb;color:var(--text);line-height:1.6;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
-img{max-width:100%}
-
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:#f1f1f1}
 ::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px}
 
 /* NAV */
@@ -42,11 +38,15 @@ img{max-width:100%}
 .btn-nav.solid{background:var(--green);color:#fff}
 .btn-nav:hover{opacity:.85;transform:translateY(-1px)}
 .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
-.burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:.3s}
+.burger span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 5%;flex-direction:column;gap:4px;z-index:999;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:15px;font-weight:500;color:var(--sub);padding:10px 14px;border-radius:8px}
+.mobile-nav a:hover{color:var(--green);background:var(--green-light)}
 
 /* HERO */
 .hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 50%,#085041 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")}
 .hero-content{flex:1;max-width:600px;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.2);color:#7ee8b8;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(46,204,113,.3);letter-spacing:.5px;text-transform:uppercase}
 .hero h1{font-size:clamp(36px,5vw,58px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px}
@@ -58,7 +58,7 @@ img{max-width:100%}
 .btn-hero-secondary{background:rgba(255,255,255,.12);color:#fff;font-size:15px;font-weight:600;padding:15px 28px;border-radius:12px;border:1.5px solid rgba(255,255,255,.3);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s}
 .btn-hero-secondary:hover{background:rgba(255,255,255,.2)}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;text-align:center;backdrop-filter:blur(10px)}
+.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;text-align:center}
 .hero-stat-num{font-size:26px;font-weight:700;color:#7ee8b8}
 .hero-stat-label{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 .hero-visual{flex:1;display:flex;justify-content:center;align-items:center;z-index:1;padding-left:40px}
@@ -68,8 +68,7 @@ img{max-width:100%}
 .hero-sensor-name{color:rgba(255,255,255,.8);font-size:13px}
 .hero-sensor-val{color:#7ee8b8;font-size:15px;font-weight:700}
 .hero-sensor-dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;margin-left:8px;animation:pulse 1.5s infinite}
-.hero-alert{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:10px;padding:12px;margin-top:16px;display:flex;align-items:center;gap:10px}
-.hero-alert-icon{font-size:18px}
+.hero-alert{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);border-radius:10px;padding:12px;margin-top:16px;display:flex;align-items:center;gap:10px}
 .hero-alert-text{color:rgba(255,255,255,.8);font-size:12px}
 
 /* SECTIONS */
@@ -80,9 +79,9 @@ section.alt{background:#fff}
 .section-title{font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--dark);margin-bottom:12px;line-height:1.2}
 .section-sub{font-size:16px;color:var(--sub);line-height:1.8;max-width:600px;margin-bottom:44px}
 
-/* COURS */
+/* MODULES */
 .modules{display:flex;flex-direction:column;gap:8px;max-width:900px;margin:0 auto}
-.module{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:18px;transition:.2s;cursor:default}
+.module{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:18px;transition:.2s}
 .module:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(15,110,86,.08);transform:translateX(4px)}
 .module-num{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .module-body{flex:1}
@@ -113,7 +112,6 @@ section.alt{background:#fff}
 .book-cover-icon{font-size:48px;color:rgba(255,255,255,.15);position:absolute;bottom:24px;right:24px}
 .book-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
 .book-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
-.book-info{}
 .book-info .section-eyebrow{color:#7ee8b8}
 .book-info .section-title{color:#fff;font-size:28px}
 .book-info .section-sub{color:rgba(255,255,255,.7);margin-bottom:24px}
@@ -146,10 +144,7 @@ section.alt{background:#fff}
 .akili-demo{background:var(--dark2);border-radius:16px;padding:24px;max-width:900px;margin:0 auto;font-family:'Courier New',monospace}
 .akili-demo-bar{display:flex;gap:6px;margin-bottom:16px}
 .akili-demo-dot{width:12px;height:12px;border-radius:50%}
-.akili-demo-line{color:#7ee8b8;font-size:13px;margin-bottom:6px}
-.akili-demo-line.comment{color:#4d6b60}
-.akili-demo-line.keyword{color:#569cd6}
-.akili-demo-line.value{color:#ce9178}
+.akili-demo-line{font-size:13px;margin-bottom:6px}
 
 /* PRICING */
 .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;max-width:900px;margin:0 auto}
@@ -167,12 +162,12 @@ section.alt{background:#fff}
 .price-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
 .btn-price{width:100%;padding:12px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;border:1.5px solid var(--border);background:#fff;color:var(--text)}
 .btn-price:hover{border-color:var(--green);color:var(--green)}
-.btn-price.primary{background:var(--green);color:#fff;border:none;box-shadow:0 4px 14px rgba(15,110,86,.3)}
+.btn-price.primary{background:var(--green);color:#fff;border:none}
 .btn-price.primary:hover{background:var(--green-dark)}
 
 /* TUTOR */
 .tutor-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;gap:32px;align-items:flex-start;max-width:900px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.tutor-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2ecc71);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;flex-shrink:0;box-shadow:0 4px 14px rgba(15,110,86,.3)}
+.tutor-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2ecc71);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;flex-shrink:0}
 .tutor-right{flex:1}
 .tutor-name{font-size:22px;font-weight:700;margin-bottom:4px}
 .tutor-role{font-size:14px;color:var(--sub);margin-bottom:16px}
@@ -181,7 +176,7 @@ section.alt{background:#fff}
 .tutor-bio{font-size:14px;color:#555;line-height:1.8;margin-bottom:20px}
 .tutor-actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn-tutor{padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
-.btn-tutor.primary{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(15,110,86,.3)}
+.btn-tutor.primary{background:var(--green);color:#fff}
 .btn-tutor.secondary{background:var(--green-light);color:var(--green);border:1.5px solid #b9e0d0}
 .btn-tutor:hover{transform:translateY(-1px)}
 
@@ -196,8 +191,8 @@ section.alt{background:#fff}
 
 /* FAQ */
 .faq{max-width:900px;margin:0 auto}
-.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
-.faq-q{padding:20px 0;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:20px 0;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .faq-q:hover{color:var(--green)}
 .faq-toggle{font-size:20px;color:var(--green);transition:.3s;flex-shrink:0}
 .faq-a{font-size:14px;color:var(--sub);line-height:1.8;max-height:0;overflow:hidden;transition:.3s}
@@ -218,8 +213,7 @@ section.alt{background:#fff}
 .newsletter p{color:rgba(255,255,255,.8);font-size:14px;margin-bottom:24px}
 .newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap}
 .newsletter-input{flex:1;min-width:200px;padding:13px 18px;border-radius:10px;border:none;font-size:14px;outline:none}
-.newsletter-btn{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:13px 22px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;transition:.2s}
-.newsletter-btn:hover{background:var(--green-light)}
+.newsletter-btn{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:13px 22px;border-radius:10px;border:none;cursor:pointer}
 
 /* FOOTER */
 footer{background:var(--dark);padding:48px 5% 24px}
@@ -233,27 +227,24 @@ footer{background:var(--dark);padding:48px 5% 24px}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
 .footer-links a{font-size:13px;color:rgba(255,255,255,.55);transition:.2s}
 .footer-links a:hover{color:#7ee8b8}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;max-width:900px;margin:0 auto;gap:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;gap:12px;flex-wrap:wrap}
 .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
-.footer-badges{display:flex;gap:8px}
-.footer-badge{font-size:11px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);padding:4px 10px;border-radius:6px}
 
 /* FLOATING WA */
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:.2s;text-decoration:none}
 .wa-float:hover{transform:scale(1.1)}
 
-/* MOBILE NAV */
-.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 5%;flex-direction:column;gap:4px;z-index:999;box-shadow:0 8px 20px rgba(0,0,0,.08)}
-.mobile-nav.open{display:flex}
-.mobile-nav a{font-size:15px;font-weight:500;color:var(--sub);padding:10px 14px;border-radius:8px;transition:.2s}
-.mobile-nav a:hover{color:var(--green);background:var(--green-light)}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888}
 
 /* RESPONSIVE */
 @media(max-width:768px){
   .nav-links,.nav-actions{display:none}
   .burger{display:flex}
   .hero{flex-direction:column;text-align:center;padding:100px 5% 60px}
-  .hero-content{max-width:100%}
   .hero-visual{display:none}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .hero-btns{justify-content:center}
@@ -264,16 +255,10 @@ footer{background:var(--dark);padding:48px 5% 24px}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-grid>:first-child{grid-column:1/-1}
 }
-@media(max-width:480px){
-  .hero-stats{grid-template-columns:repeat(2,1fr)}
-  .pricing{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-}
 </style>
 </head>
 <body>
 
-<!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/46729394171" target="_blank" class="wa-float" title="WhatsApp">💬</a>
 
 <!-- NAV -->
@@ -290,23 +275,21 @@ footer{background:var(--dark);padding:48px 5% 24px}
     <a href="#livre">Livre</a>
     <a href="#akili">AKILI</a>
     <a href="#tarifs">Tarifs</a>
-    <a href="#tuteur">Tuteur</a>
+    <a href="#tuteur">Formateur</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-actions">
-    <button class="btn-nav outline" onclick="document.getElementById('livre').scrollIntoView({behavior:'smooth'})">📚 Livre gratuit</button>
+    <button class="btn-nav outline" onclick="showModal('demo')">📅 Demander une démo</button>
     <button class="btn-nav solid" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">Commencer →</button>
   </div>
-  <button class="burger" id="burger">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobilenav">
   <a href="#cours" onclick="closeMobile()">Cours</a>
   <a href="#livre" onclick="closeMobile()">Livre</a>
   <a href="#akili" onclick="closeMobile()">AKILI</a>
   <a href="#tarifs" onclick="closeMobile()">Tarifs</a>
-  <a href="#tuteur" onclick="closeMobile()">Tuteur</a>
+  <a href="#tuteur" onclick="closeMobile()">Formateur</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
@@ -315,10 +298,10 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="hero-content">
     <div class="hero-badge">🌍 Alliance des États du Sahel — AES</div>
     <h1>Automatise<span>ton Sahel</span></h1>
-    <p class="hero-desc">La première formation complète en automatisation industrielle conçue pour les jeunes d'Afrique. Arduino, Raspberry Pi, IEC 61131-3 et AKILI Platform. 100% en ligne, 100% sur smartphone.</p>
+    <p class="hero-desc">La première formation complète en automatisation industrielle conçue pour les jeunes d'Afrique. Arduino, Raspberry Pi, IEC 61131-3 et AKILI Platform. 100% en ligne, accessible sur smartphone.</p>
     <div class="hero-btns">
       <button class="btn-hero-primary" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">▶ Commencer gratuitement</button>
-      <button class="btn-hero-secondary" onclick="document.getElementById('livre').scrollIntoView({behavior:'smooth'})">📚 Télécharger le livre</button>
+      <button class="btn-hero-secondary" onclick="showModal('demo')">📅 Demander une démonstration</button>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Modules</div></div>
@@ -330,26 +313,11 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="hero-visual">
     <div class="hero-card">
       <div class="hero-card-title">⚡ AKILI Platform — Live</div>
-      <div class="hero-sensor">
-        <span class="hero-sensor-name">🌡 Chambre froide 1</span>
-        <span style="display:flex;align-items:center"><span class="hero-sensor-val">4.2°C</span><span class="hero-sensor-dot"></span></span>
-      </div>
-      <div class="hero-sensor">
-        <span class="hero-sensor-name">❄ Congélateur</span>
-        <span style="display:flex;align-items:center"><span class="hero-sensor-val">-18.5°C</span><span class="hero-sensor-dot"></span></span>
-      </div>
-      <div class="hero-sensor">
-        <span class="hero-sensor-name">💧 Humidité sol</span>
-        <span style="display:flex;align-items:center"><span class="hero-sensor-val">67%</span><span class="hero-sensor-dot"></span></span>
-      </div>
-      <div class="hero-sensor">
-        <span class="hero-sensor-name">🔋 Batterie solaire</span>
-        <span style="display:flex;align-items:center"><span class="hero-sensor-val">87%</span><span class="hero-sensor-dot"></span></span>
-      </div>
-      <div class="hero-alert">
-        <span class="hero-alert-icon">✅</span>
-        <span class="hero-alert-text">Tous les systèmes normaux — Dernière vérification il y a 10s</span>
-      </div>
+      <div class="hero-sensor"><span class="hero-sensor-name">🌡 Chambre froide 1</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">4.2°C</span><span class="hero-sensor-dot"></span></span></div>
+      <div class="hero-sensor"><span class="hero-sensor-name">❄ Congélateur</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">-18.5°C</span><span class="hero-sensor-dot"></span></span></div>
+      <div class="hero-sensor"><span class="hero-sensor-name">💧 Humidité sol</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">67%</span><span class="hero-sensor-dot"></span></span></div>
+      <div class="hero-sensor"><span class="hero-sensor-name">🔋 Batterie solaire</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">87%</span><span class="hero-sensor-dot"></span></span></div>
+      <div class="hero-alert"><span style="font-size:18px">✅</span><span class="hero-alert-text">Tous les systèmes normaux — Dernière vérification il y a 10s</span></div>
     </div>
   </div>
 </div>
@@ -401,9 +369,9 @@ footer{background:var(--dark);padding:48px 5% 24px}
     <div class="book-info">
       <div class="section-eyebrow">Le livre</div>
       <div class="section-title">Manuel complet téléchargeable</div>
-      <div class="section-sub">Le livre officiel du cours.10 chapitres, schémas d'explication, exemples concrets du Sahel et exercices pratiques. Format Lulu 6×9.</div>
+      <div class="section-sub">Le manuel officiel du cours. 80 pages, 10 chapitres, schémas d'explication, exemples concrets du Sahel et exercices pratiques. Format 6×9.</div>
       <div class="book-stats">
-        <div class="book-stat"><div class="book-stat-num">200</div><div class="book-stat-label">Pages</div></div>
+        <div class="book-stat"><div class="book-stat-num">80</div><div class="book-stat-label">Pages</div></div>
         <div class="book-stat"><div class="book-stat-num">10</div><div class="book-stat-label">Chapitres</div></div>
         <div class="book-stat"><div class="book-stat-num">30+</div><div class="book-stat-label">Exercices</div></div>
       </div>
@@ -423,30 +391,21 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <div class="book-options">
         <div class="book-option" onclick="showModal('ebook-free')">
           <span class="book-option-icon">📖</span>
-          <div class="book-option-body">
-            <div class="book-option-title">Aperçu gratuit — 3 premiers chapitres</div>
-            <div class="book-option-desc">PDF téléchargeable immédiatement — aucun paiement</div>
-          </div>
+          <div class="book-option-body"><div class="book-option-title">Aperçu gratuit — 3 premiers chapitres</div><div class="book-option-desc">PDF téléchargeable immédiatement</div></div>
           <span class="book-option-price">GRATUIT</span>
         </div>
         <div class="book-option" onclick="showModal('ebook-full')" style="border-color:rgba(46,204,113,.4)">
           <span class="book-option-icon">📚</span>
-          <div class="book-option-body">
-            <div class="book-option-title">eBook complet — PDF intégral</div>
-            <div class="book-option-desc"> 80 pages, tous les chapitres, exercices et annexes</div>
-          </div>
+          <div class="book-option-body"><div class="book-option-title">eBook complet — PDF intégral</div><div class="book-option-desc">80 pages, tous les chapitres, exercices et annexes</div></div>
           <span class="book-option-price">5 000 FCFA</span>
         </div>
-        <div class="book-option" onclick="showModal('ebook-print')">
+        <div class="book-option" style="opacity:.6;cursor:default">
           <span class="book-option-icon">🖨</span>
-          <div class="book-option-body">
-            <div class="book-option-title">Version imprimée — Lulu.com</div>
-            <div class="book-option-desc">Format 6×9 — livraison internationale</div>
-          </div>
+          <div class="book-option-body"><div class="book-option-title">Version imprimée — Lulu.com</div><div class="book-option-desc">Format 6×9 — livraison internationale</div></div>
           <span class="book-option-price">Bientôt</span>
         </div>
       </div>
-      <div class="book-note">📬 Le livre sera envoyé par email en PDF après confirmation du paiement Wave/Orange Money</div>
+      <div class="book-note">📬 Le livre est envoyé par email en PDF après confirmation du paiement Wave/Orange Money</div>
     </div>
   </div>
 </div>
@@ -464,7 +423,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
     <div class="akili-feat"><div class="akili-feat-icon">☀️</div><div class="akili-feat-title">Énergie Solaire</div><div class="akili-feat-desc">Gestion batterie, MPPT, coupures programmées. Villages hors réseau.</div></div>
     <div class="akili-feat"><div class="akili-feat-icon">💧</div><div class="akili-feat-title">Gestion de l'Eau</div><div class="akili-feat-desc">Pompage automatique, qualité eau, distribution programmée.</div></div>
     <div class="akili-feat"><div class="akili-feat-icon">🤖</div><div class="akili-feat-title">Intelligence Artificielle</div><div class="akili-feat-desc">Détection d'anomalies, prédiction de pannes, optimisation PID automatique.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">📱</div><div class="akili-feat-title">Accès Smartphone</div><div class="akili-feat-desc">Dashboard web accessible depuis n'importe quel appareil. VPN Tailscale intégré.</div></div>
+    <div class="akili-feat"><div class="akili-feat-icon">📱</div><div class="akili-feat-title">Accès Smartphone</div><div class="akili-feat-desc">Dashboard web accessible depuis n'importe quel appareil. VPN sécurisé intégré.</div></div>
   </div>
   <div class="akili-demo container">
     <div class="akili-demo-bar">
@@ -473,17 +432,17 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <div class="akili-demo-dot" style="background:#28c840"></div>
       <span style="color:rgba(255,255,255,.3);font-size:12px;margin-left:8px">AAL — AKILI Automation Language</span>
     </div>
-    <div class="akili-demo-line comment">// Règle d'alerte cold chain — pharmacie Ouagadougou</div>
-    <div class="akili-demo-line"><span style="color:#569cd6">REGLE</span>: alerte_temperature_critique</div>
-    <div class="akili-demo-line"><span style="color:#569cd6">SI</span>: fridge_1 > <span style="color:#b5cea8">8.0</span></div>
-    <div class="akili-demo-line"><span style="color:#569cd6">ET</span>: depuis <span style="color:#b5cea8">5</span> minutes</div>
-    <div class="akili-demo-line"><span style="color:#569cd6">ALORS</span>: SMS <span style="color:#ce9178">+22670000000</span> <span style="color:#ce9178">"⚠ Alerte! Temp {fridge_1}°C dépasse 8°C"</span></div>
-    <div class="akili-demo-line" style="padding-left:40px">EMAIL <span style="color:#ce9178">responsable@pharmacie.bf</span> <span style="color:#ce9178">"Rapport température critique"</span></div>
-    <div class="akili-demo-line" style="padding-left:40px">ALARME priorité haute</div>
+    <div class="akili-demo-line" style="color:#4d9e78">// Règle d'alerte cold chain — pharmacie Ouagadougou</div>
+    <div class="akili-demo-line" style="color:#569cd6">REGLE: <span style="color:#ce9178">alerte_temperature_critique</span></div>
+    <div class="akili-demo-line" style="color:#569cd6">SI: <span style="color:#fff">fridge_1 > 8.0</span></div>
+    <div class="akili-demo-line" style="color:#569cd6">ET: <span style="color:#fff">depuis 5 minutes</span></div>
+    <div class="akili-demo-line" style="color:#569cd6">ALORS: <span style="color:#ce9178">SMS +22670000000 "⚠ Alerte! Temp {fridge_1}°C dépasse 8°C"</span></div>
+    <div class="akili-demo-line" style="padding-left:48px;color:#ce9178">EMAIL responsable@pharmacie.bf "Rapport température critique"</div>
+    <div class="akili-demo-line" style="padding-left:48px;color:#ce9178">ALARME priorité haute</div>
     <div class="akili-demo-line" style="margin-top:12px;color:rgba(255,255,255,.2)">// Résultat : SMS envoyé en 3 secondes — aucun code requis</div>
   </div>
   <div style="text-align:center;margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-<button class="btn-access btn-direct" onclick="showModal('demo')">📅 Demander une démonstration</button>
+    <button class="btn-access btn-direct" style="flex:none;padding:14px 28px" onclick="showModal('demo')">📅 Demander une démonstration AKILI</button>
     <button class="btn-access btn-lip" style="flex:none;padding:14px 28px" onclick="showModal('installer')">🔧 Devenir installateur</button>
   </div>
 </section>
@@ -493,7 +452,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="container">
     <div class="section-eyebrow">Tarifs</div>
     <div class="section-title">Choisissez votre formule</div>
-    <div class="section-sub">Cours gratuit pour le plus grand nombre. Certification et tutorat pour ceux qui veulent aller plus loin et créer une activité.</div>
+    <div class="section-sub">Cours gratuit pour le plus grand nombre. Certification et tutorat pour ceux qui veulent aller plus loin.</div>
   </div>
   <div class="pricing">
     <div class="price-card">
@@ -507,7 +466,6 @@ footer{background:var(--dark);padding:48px 5% 24px}
         <li>Simulations en ligne</li>
         <li>Aperçu livre 3 chapitres</li>
         <li>Forum communauté</li>
-        <li>Démo AKILI</li>
       </ul>
       <button class="btn-price" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">Commencer</button>
     </div>
@@ -520,10 +478,9 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <div class="price-period">Paiement unique</div>
       <ul class="price-list">
         <li>Tout le gratuit</li>
-        <li>eBook PDF complet</li>
+        <li>eBook PDF complet (80 pages)</li>
         <li>Attestation officielle</li>
         <li>QR code vérifiable</li>
-        <li>Accès AKILI 3 mois</li>
       </ul>
       <button class="btn-price primary" onclick="showModal('certified')">Obtenir</button>
     </div>
@@ -538,7 +495,6 @@ footer{background:var(--dark);padding:48px 5% 24px}
         <li>2 sessions live/mois</li>
         <li>WhatsApp direct Eric</li>
         <li>Correction de projet</li>
-        <li>Certificat signé</li>
       </ul>
       <button class="btn-price" onclick="showModal('tutorat')">Réserver</button>
     </div>
@@ -553,7 +509,6 @@ footer{background:var(--dark);padding:48px 5% 24px}
         <li>Kit installateur</li>
         <li>Licence revendeur</li>
         <li>Support technique</li>
-        <li>Réseau partenaires</li>
       </ul>
       <button class="btn-price" onclick="showModal('installer')">Devenir installateur</button>
     </div>
@@ -568,12 +523,12 @@ footer{background:var(--dark);padding:48px 5% 24px}
     <div class="section-sub">Tous les outils fonctionnent sur smartphone et tablette. Connexion 3G suffisante. Zéro installation obligatoire pour commencer.</div>
   </div>
   <div class="tools">
-    <div class="tool"><span class="tool-icon">🔧</span><div class="tool-name">TinkerCAD</div><div class="tool-desc">Simulation Arduino en ligne</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">⚡</span><div class="tool-name">Wokwi</div><div class="tool-desc">Simulation avancée Arduino/Pi</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">💻</span><div class="tool-name">OpenPLC Editor</div><div class="tool-desc">Programmation IEC 61131-3</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">📱</span><div class="tool-name">AKILI Platform</div><div class="tool-desc">Démo live en ligne</div><span class="tool-free">Inclus</span></div>
-    <div class="tool"><span class="tool-icon">🎬</span><div class="tool-name">Vidéos Vimeo</div><div class="tool-desc">Démonstrations hardware</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">💬</span><div class="tool-name">Forum Liptalink</div><div class="tool-desc">Communauté d'apprenants</div><span class="tool-free">Gratuit</span></div>
+    <div class="tool"><span class="tool-icon">🔧</span><div class="tool-name">TinkerCAD</div><div class="tool-desc">Simulation Arduino</div><span class="tool-free">Gratuit</span></div>
+    <div class="tool"><span class="tool-icon">⚡</span><div class="tool-name">Wokwi</div><div class="tool-desc">Simulation avancée</div><span class="tool-free">Gratuit</span></div>
+    <div class="tool"><span class="tool-icon">💻</span><div class="tool-name">OpenPLC Editor</div><div class="tool-desc">IEC 61131-3</div><span class="tool-free">Gratuit</span></div>
+    <div class="tool"><span class="tool-icon">📱</span><div class="tool-name">AKILI Platform</div><div class="tool-desc">Sur demande</div><span class="tool-free">Demo</span></div>
+    <div class="tool"><span class="tool-icon">🎬</span><div class="tool-name">Vidéos Vimeo</div><div class="tool-desc">Démonstrations</div><span class="tool-free">Gratuit</span></div>
+    <div class="tool"><span class="tool-icon">💬</span><div class="tool-name">Forum Liptalink</div><div class="tool-desc">Communauté</div><span class="tool-free">Gratuit</span></div>
   </div>
 </section>
 
@@ -582,23 +537,22 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="container">
     <div class="section-eyebrow">Votre formateur</div>
     <div class="section-title">Eric Fanane</div>
-    <div class="section-sub">Ingénieur automaticien, enseignant certifié et fondateur de CrossTech Path. 25 ans d'expérience.</div>
+    <div class="section-sub">Ingénieur automaticien et enseignant certifié avec 25 ans d'expérience en industrie et enseignement technique.</div>
   </div>
   <div class="tutor-card">
     <div class="tutor-avatar">EF</div>
     <div class="tutor-right">
       <div class="tutor-name">Eric Fanane</div>
-      <div class="tutor-role">Senior Lecturer — Ingénieur Automaticien — Fondateur AKILI Platform</div>
+      <div class="tutor-role">Ingénieur Automaticien — Enseignant Certifié — Fondateur AKILI Platform</div>
       <div class="tutor-tags">
-        <span class="tutor-tag">25 ans d'enseignement</span>
         <span class="tutor-tag">STI Stockholm</span>
-        <span class="tutor-tag">INP-HB Yamoussoukro</span>
         <span class="tutor-tag">ENS Koudougou</span>
+        <span class="tutor-tag">Lycée Technique Ouagadougou</span>
+        <span class="tutor-tag">25 ans d'expérience</span>
         <span class="tutor-tag">Bilingue FR/EN</span>
         <span class="tutor-tag">Créateur AKILI</span>
-        <span class="tutor-tag">Auteur Lulu.com</span>
       </div>
-      <div class="tutor-bio">Formé à l'Institut Technologique de Stockholm (STI) en automatisation industrielle et thermodynamique, et certifié enseignant à l'ENS Koudougou, Eric Fanane a passé 5 ans à enseigner l'électronique et la physique au Lycée Technique de Ouagadougou et 20 autres années d´experience dans dans des entrprises de haute technologie, notamment en europe du nord. Il a développé la plateforme AKILI IoT pour répondre aux besoins réels de l'industrie africaine, et publie ses cours et livres techniques pour rendre l'automatisation accessible à tous.</div>
+      <div class="tutor-bio">Formé à l'Institut Technologique de Stockholm (STI) en automatisation industrielle et thermodynamique, et certifié enseignant à l'ENS Koudougou, Eric Fanane a passé 5 ans à enseigner l'électronique et la physique au Lycée Technique de Ouagadougou et 20 autres années d'expérience dans des entreprises de haute technologie, notamment en Europe du Nord. Il a développé la plateforme AKILI IoT pour répondre aux besoins réels de l'industrie africaine, et publie ses cours et livres techniques pour rendre l'automatisation accessible à tous.</div>
       <div class="tutor-actions">
         <button class="btn-tutor primary" onclick="window.open('https://wa.me/46729394171','_blank')">💬 WhatsApp</button>
         <button class="btn-tutor secondary" onclick="showModal('tutorat')">📅 Réserver une session</button>
@@ -613,15 +567,14 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="container">
     <div class="section-eyebrow">FAQ</div>
     <div class="section-title">Questions fréquentes</div>
-    <div class="section-sub">Tout ce que vous devez savoir avant de commencer.</div>
   </div>
   <div class="faq container">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Ai-je besoin d'un ordinateur ?<span class="faq-toggle">+</span></div><div class="faq-a">Non — les simulations et vidéos fonctionnent sur smartphone. Seul OpenPLC Editor (Module 6) nécessite un ordinateur ou une tablette. Les modules hardware peuvent être réalisés avec un Raspberry Pi ou Arduino peu coûteux.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment télécharger le livre ?<span class="faq-toggle">+</span></div><div class="faq-a">L'aperçu gratuit (3 chapitres) est disponible immédiatement. Le livre complet (5 000 FCFA) est envoyé par email en PDF après confirmation de votre paiement Wave ou Orange Money. Contactez-nous sur WhatsApp pour finaliser.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment obtenir mon certificat ?<span class="faq-toggle">+</span></div><div class="faq-a">Complétez les 10 modules, obtenez 70% au QCM final, soumettez votre projet. Le certificat est généré automatiquement et vérifiable par QR code. Le paiement de 5 000 FCFA active l'attestation officielle.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que le programme Installateur AKILI ?<span class="faq-toggle">+</span></div><div class="faq-a">Vous apprenez à installer AKILI chez des clients (pharmacies, entrepôts, fermes). Vous devenez revendeur agréé et recevez des revenus récurrents : 20 000 à 35 000 FCFA par client par mois en maintenance.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment payer en FCFA ?<span class="faq-toggle">+</span></div><div class="faq-a">Paiement via Wave, Orange Money et Mobile Money disponibles. Contactez-nous sur WhatsApp au +46 729 394 171 pour recevoir les instructions de paiement et finaliser votre inscription.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Le cours est-il aussi sur Liptalink ?<span class="faq-toggle">+</span></div><div class="faq-a">Oui — vous pouvez accéder au cours directement ici ou via Liptalink. Les deux options donnent accès aux mêmes contenus. Liptalink offre une interface d'apprentissage structurée avec suivi de progression.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Ai-je besoin d'un ordinateur ?<span class="faq-toggle">+</span></div><div class="faq-a">Non — les simulations et vidéos fonctionnent sur smartphone. Seul OpenPLC Editor nécessite un ordinateur ou une tablette.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment télécharger le livre ?<span class="faq-toggle">+</span></div><div class="faq-a">L'aperçu gratuit (3 chapitres) est disponible immédiatement sur demande. Le livre complet (5 000 FCFA) est envoyé par email en PDF après confirmation du paiement Wave ou Orange Money via WhatsApp.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment obtenir mon certificat ?<span class="faq-toggle">+</span></div><div class="faq-a">Complétez les 10 modules, obtenez 70% au QCM final, soumettez votre projet. Le certificat est généré automatiquement avec un QR code vérifiable. Le paiement de 5 000 FCFA active l'attestation officielle.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment voir AKILI en action ?<span class="faq-toggle">+</span></div><div class="faq-a">AKILI est une solution industrielle professionnelle. Pour voir une démonstration, contactez-nous via le formulaire de demande de démo. Eric Fanane organise une session personnalisée selon votre secteur d'activité.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment payer en FCFA ?<span class="faq-toggle">+</span></div><div class="faq-a">Paiement via Wave, Orange Money et Mobile Money disponibles. Contactez-nous sur WhatsApp au +46 729 394 171 pour recevoir les instructions et finaliser votre inscription.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que le programme Installateur AKILI ?<span class="faq-toggle">+</span></div><div class="faq-a">Vous apprenez à installer AKILI chez des clients (pharmacies, entrepôts, fermes). Vous devenez revendeur agréé avec des revenus récurrents de 20 000 à 35 000 FCFA par client par mois.</div></div>
   </div>
 </section>
 
@@ -629,10 +582,10 @@ footer{background:var(--dark);padding:48px 5% 24px}
 <section>
   <div class="newsletter">
     <h3>📬 Restez informé</h3>
-    <p>Nouveaux modules, livres, sessions live, opportunités installateur AKILI — soyez le premier à être notifié.</p>
+    <p>Nouveaux modules, livres, sessions live, opportunités installateur AKILI — soyez le premier notifié.</p>
     <div class="newsletter-form">
       <input class="newsletter-input" type="email" placeholder="votre@email.com">
-      <button class="newsletter-btn">S'inscrire</button>
+      <button class="newsletter-btn" onclick="alert('Merci ! Nous vous contacterons bientôt.')">S\'inscrire</button>
     </div>
   </div>
 </section>
@@ -647,7 +600,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="contact-grid">
     <div class="contact-card"><span class="contact-icon">💬</span><div class="contact-label">WhatsApp</div><div class="contact-value"><a href="https://wa.me/46729394171">+46 729 394 171</a></div></div>
     <div class="contact-card"><span class="contact-icon">📧</span><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:info@akilijuma.org">info@akilijuma.org</a></div></div>
-    <div class="contact-card"><span class="contact-icon">🌐</span><div class="contact-label">AKILI Platform</div><div class="contact-value"><a href="https://akilijuma.org" target="_blank">akilijuma.org</a></div></div>
+    <div class="contact-card"><span class="contact-icon">🌐</span><div class="contact-label">Site AKILI</div><div class="contact-value"><a href="https://akilijuma.org" target="_blank">akilijuma.org</a></div></div>
     <div class="contact-card"><span class="contact-icon">📚</span><div class="contact-label">Liptalink</div><div class="contact-value"><a href="https://liptalink.com" target="_blank">liptalink.com</a></div></div>
   </div>
 </section>
@@ -670,7 +623,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <ul class="footer-links">
         <li><a href="#cours">Le cours</a></li>
         <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#tuteur">Tuteur</a></li>
+        <li><a href="#tuteur">Formateur</a></li>
         <li><a href="https://liptalink.com" target="_blank">Liptalink</a></li>
       </ul>
     </div>
@@ -678,9 +631,9 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <div class="footer-col-title">Ressources</div>
       <ul class="footer-links">
         <li><a href="#livre">Livre PDF</a></li>
-        <li><a href="https://lulu.com" target="_blank">Lulu.com</a></li>
         <li><a href="https://github.com/ericfanane" target="_blank">GitHub AKILI</a></li>
         <li><a href="https://wokwi.com" target="_blank">Wokwi</a></li>
+        <li><a href="https://tinkercad.com" target="_blank">TinkerCAD</a></li>
       </ul>
     </div>
     <div>
@@ -695,79 +648,67 @@ footer{background:var(--dark);padding:48px 5% 24px}
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 CrossTech Path — AKILI JUMA — SIRET 89948505600019</div>
-    <div class="footer-badges">
-      <span class="footer-badge">.</span>
-      <span class="footer-badge">.</span>
-      <span class="footer-badge">🌍 AES</span>
-    </div>
   </div>
 </footer>
 
 <!-- MODAL -->
-<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px">
-  <div id="modal-box" style="background:#fff;border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto">
-    <button onclick="closeModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888">×</button>
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <script>
-// NAV SCROLL
 window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
 });
-
-// BURGER
 document.getElementById('burger').addEventListener('click',function(){
   document.getElementById('mobilenav').classList.toggle('open');
 });
 function closeMobile(){document.getElementById('mobilenav').classList.remove('open')}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
 
-// FAQ
-function toggleFaq(el){
-  el.parentElement.classList.toggle('open');
-}
-
-// MODAL
 function showModal(type){
-  const m = document.getElementById('modal');
-  const c = document.getElementById('modal-content');
-  const modals = {
-    'direct': `<h3 style="color:#0f6e56;margin-bottom:12px">💳 Paiement direct</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:20px">Pour acquérir le cours ou la certification, contactez-nous sur WhatsApp. Nous acceptons Wave, Orange Money et Mobile Money.</p>
-      <a href="https://wa.me/46729394171?text=Je%20souhaite%20acquérir%20le%20cours%20Automatise%20ton%20Sahel" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px">💬 WhatsApp — +46 729 394 171</a>
-      <a href="mailto:info@akilijuma.org?subject=Cours Automatise ton Sahel" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px">📧 Email — info@akilijuma.org</a>`,
-    'ebook-free': `<h3 style="color:#0f6e56;margin-bottom:12px">📖 Aperçu gratuit — 3 chapitres</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:20px">Recevez immédiatement les 3 premiers chapitres du livre "Automatise ton Sahel" en PDF. Entrez votre email ci-dessous.</p>
-      <input type="email" placeholder="votre@email.com" style="width:100%;padding:13px;border:1.5px solid #ddd;border-radius:10px;font-size:14px;margin-bottom:12px;outline:none">
-      <button onclick="alert('Merci ! Le PDF sera envoyé dans les prochaines 24h. En attendant contactez-nous sur WhatsApp.')" style="width:100%;background:#0f6e56;color:#fff;padding:14px;border-radius:10px;border:none;font-weight:700;font-size:15px;cursor:pointer">📥 Recevoir le PDF gratuit</button>
-      <p style="color:#aaa;font-size:12px;text-align:center;margin-top:8px">Envoi par email sous 24h — aucun spam</p>`,
-    'ebook-full': `<h3 style="color:#0f6e56;margin-bottom:12px">📚 eBook complet — 5 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:20px">200 pages, 10 chapitres, tous les exercices et annexes. Envoyé en PDF par email après confirmation du paiement.</p>
-      <div style="background:#e1f5ee;border-radius:10px;padding:16px;margin-bottom:16px">
-        <div style="font-size:13px;color:#085041;font-weight:600;margin-bottom:8px">Comment payer :</div>
-        <div style="font-size:13px;color:#333;line-height:1.8">1. Contactez-nous sur WhatsApp<br>2. Envoyez 5 000 FCFA via Wave ou Orange Money<br>3. Recevez le PDF par email sous 1h</div>
+  const modals={
+    'demo':`<h3 style="color:#0f6e56;margin-bottom:12px;font-size:20px">📅 Demander une démonstration AKILI</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:20px">AKILI est une solution industrielle professionnelle. Contactez-nous pour organiser une démonstration personnalisée selon votre secteur d'activité (pharmacie, agriculture, énergie, eau).</p>
+      <div style="background:#e1f5ee;border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;color:#085041;line-height:1.8">
+        <strong>La démo inclut :</strong><br>
+        • Présentation live de l'interface AKILI<br>
+        • Démonstration des capteurs en temps réel<br>
+        • Configuration des règles AAL pour votre secteur<br>
+        • Questions-réponses avec Eric Fanane
       </div>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20acheter%20le%20livre%20Automatise%20ton%20Sahel%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px">💬 Payer via WhatsApp</a>`,
-    'certified': `<h3 style="color:#0f6e56;margin-bottom:12px">🏆 Formule Certifiée — 5 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Incluant : eBook PDF complet + Attestation officielle + QR code vérifiable + Accès AKILI 3 mois.</p>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20la%20formule%20Certifiée%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px">💬 Payer via WhatsApp</a>
-      <a href="mailto:info@akilijuma.org?subject=Formule Certifiée" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px">📧 Email</a>`,
-    'tutorat': `<h3 style="color:#0f6e56;margin-bottom:12px">👨‍🏫 Tutorat Premium — 25 000 FCFA/mois</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">2 sessions live par mois avec Eric Fanane, correction de projet personnalisée, accès WhatsApp direct, certificat signé.</p>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20le%20tutorat%20premium%20avec%20Eric%20Fanane" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px">💬 Contacter Eric sur WhatsApp</a>`,
-    'installer': `<h3 style="color:#0f6e56;margin-bottom:12px">🔧 Programme Installateur AKILI — 50 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Formation complète + kit installateur + licence revendeur + support technique + réseau partenaires. Revenus potentiels : 200 000+ FCFA/mois avec 10 clients.</p>
-      <div style="background:#e1f5ee;border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041">
-        💡 Avec 10 clients à 20 000 FCFA/mois = 200 000 FCFA récurrents chaque mois
-      </div>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20devenir%20installateur%20AKILI" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px">💬 Devenir installateur — WhatsApp</a>`
+      <a href="https://wa.me/46729394171?text=Bonjour%20Eric%2C%20je%20souhaite%20demander%20une%20d%C3%A9monstration%20d'AKILI%20Platform" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px;text-decoration:none">💬 Demander via WhatsApp</a>
+      <a href="mailto:info@akilijuma.org?subject=Demande%20de%20d%C3%A9monstration%20AKILI" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">📧 Demander par email</a>`,
+    'direct':`<h3 style="color:#0f6e56;margin-bottom:12px">💳 Paiement direct</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Contactez-nous sur WhatsApp pour acquérir le cours ou la certification. Nous acceptons Wave, Orange Money et Mobile Money.</p>
+      <a href="https://wa.me/46729394171?text=Je%20souhaite%20acqu%C3%A9rir%20le%20cours%20Automatise%20ton%20Sahel" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px;text-decoration:none">💬 WhatsApp — +46 729 394 171</a>
+      <a href="mailto:info@akilijuma.org?subject=Cours%20Automatise%20ton%20Sahel" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">📧 Email — info@akilijuma.org</a>`,
+    'ebook-free':`<h3 style="color:#0f6e56;margin-bottom:12px">📖 Aperçu gratuit — 3 chapitres</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Recevez les 3 premiers chapitres du livre "Automatise ton Sahel" en PDF. Entrez votre email et envoyez-nous un message WhatsApp.</p>
+      <a href="https://wa.me/46729394171?text=Bonjour%2C%20je%20voudrais%20recevoir%20l'aper%C3%A7u%20gratuit%20du%20livre%20Automatise%20ton%20Sahel" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Recevoir le PDF gratuit via WhatsApp</a>
+      <p style="color:#aaa;font-size:12px;text-align:center;margin-top:10px">Envoi par email sous 24h</p>`,
+    'ebook-full':`<h3 style="color:#0f6e56;margin-bottom:12px">📚 eBook complet — 5 000 FCFA</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">80 pages, 10 chapitres complets, exercices et annexes. Envoyé en PDF par email après confirmation du paiement.</p>
+      <div style="background:#e1f5ee;border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041;line-height:1.8"><strong>Comment payer :</strong><br>1. Contactez-nous sur WhatsApp<br>2. Envoyez 5 000 FCFA via Wave ou Orange Money<br>3. Recevez le PDF par email sous 1h</div>
+      <a href="https://wa.me/46729394171?text=Je%20veux%20acheter%20le%20livre%20Automatise%20ton%20Sahel%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Payer via WhatsApp</a>`,
+    'certified':`<h3 style="color:#0f6e56;margin-bottom:12px">🏆 Formule Certifiée — 5 000 FCFA</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">eBook PDF complet (80 pages) + Attestation officielle + QR code vérifiable.</p>
+      <a href="https://wa.me/46729394171?text=Je%20veux%20la%20formule%20Certifi%C3%A9e%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Payer via WhatsApp</a>`,
+    'tutorat':`<h3 style="color:#0f6e56;margin-bottom:12px">👨‍🏫 Tutorat Premium — 25 000 FCFA/mois</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">2 sessions live par mois avec Eric Fanane, correction de projet, accès WhatsApp direct, certificat signé.</p>
+      <a href="https://wa.me/46729394171?text=Je%20veux%20le%20tutorat%20premium%20avec%20Eric%20Fanane" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Contacter Eric sur WhatsApp</a>`,
+    'installer':`<h3 style="color:#0f6e56;margin-bottom:12px">🔧 Programme Installateur AKILI — 50 000 FCFA</h3>
+      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Formation complète + kit installateur + licence revendeur + support technique + réseau partenaires.</p>
+      <div style="background:#e1f5ee;border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041">💡 Avec 10 clients à 20 000 FCFA/mois = 200 000 FCFA récurrents chaque mois</div>
+      <a href="https://wa.me/46729394171?text=Je%20veux%20devenir%20installateur%20AKILI" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Devenir installateur — WhatsApp</a>`
   };
-  c.innerHTML = modals[type] || '';
-  m.style.display = 'flex';
+  document.getElementById('modal-content').innerHTML=modals[type]||'';
+  document.getElementById('modal').classList.add('open');
 }
-function closeModal(){document.getElementById('modal').style.display='none'}
-document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()})
 </script>
 </body>
 </html>

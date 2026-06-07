@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AKILI JUMA — Plateforme IoT industrielle africaine. Automatisation, supervision et formation pour l'Afrique et le  Sahel.">
+<meta name="description" content="AKILI JUMA — Plateforme IoT industrielle africaine. Automatisation, supervision et formation pour l'Afrique du Sahel.">
 <title>AKILI JUMA — Automatise ton Sahel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,13 +44,13 @@ a{text-decoration:none;color:inherit}
 .mobile-nav a:hover{color:var(--green);background:var(--green-light)}
 
 /* HERO */
-.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 55%,#085041 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 55%,#085041 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:100px 5% 60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")}
-.hero-content{flex:1;max-width:580px;z-index:1;text-align:center;margin:0 auto}
+.hero-content{max-width:700px;z-index:1;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.2);color:#7ee8b8;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(46,204,113,.3);text-transform:uppercase;letter-spacing:.5px}
 .hero h1{font-size:clamp(36px,5vw,56px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:18px}
 .hero h1 span{color:#7ee8b8;display:block}
-.hero-desc{font-size:16px;color:rgba(255,255,255,.78);line-height:1.8;margin-bottom:34px;max-width:460px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.78);line-height:1.8;margin:0 auto 34px;max-width:540px}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;justify-content:center}
 .btn-hero-p{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:14px 26px;border-radius:12px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .btn-hero-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
@@ -324,7 +324,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🌍 Solution industrielle pour l'Afrique et le  Sahel</div>
+    <div class="hero-badge">🌍 Solution industrielle pour l'Afrique du Sahel</div>
     <h1>Automatise<span>ton Sahel</span></h1>
     <p class="hero-desc">Plateforme IoT industrielle sur Raspberry Pi. Connectez vos capteurs réels, supervisez depuis votre smartphone, alertes SMS automatiques. Zéro cloud — vos données restent sur site.</p>
     <div class="hero-btns">
@@ -355,7 +355,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
   <div class="container">
     <div class="eyebrow">Comment ça marche</div>
     <div class="s-title">Un système embarqué — pas un abonnement cloud</div>
-    <div class="s-sub">AKILI tourne entièrement en local sur le Raspberry Pi chez vous. Vous l'installez, vous le configurez, nous maintenons à distance. Vous clients payez un abonnement mensuel pour le service</div>
+    <div class="s-sub">AKILI tourne entièrement en local sur le Raspberry Pi chez votre client. Vous l'installez, vous le configurez, vous maintenez à distance. Vos clients paient un abonnement mensuel pour le service — pas pour un hébergement cloud.</div>
   </div>
   <div class="steps">
     <div class="step"><div class="step-num">1</div><div class="step-icon">📦</div><div class="step-title">Kit hardware livré</div><div class="step-desc">Raspberry Pi 5 avec AKILI pré-installé, capteurs adaptés à votre secteur, boitier industriel.</div></div>
@@ -374,7 +374,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
   </div>
   <div class="solutions">
     <div class="solution" onclick="showModal('sol-cold')">
-      <div class="sol-header"><div class="sol-icon">❄️</div><div class="sol-name">Chaine du Froid</div><div class="sol-target">Pharmacies · Dispensaires · Entrepôts</div></div>
+      <div class="sol-header"><div class="sol-icon">❄️</div><div class="sol-name">Cold Chain</div><div class="sol-target">Pharmacies · Dispensaires · Entrepôts</div></div>
       <div class="sol-body">
         <ul class="sol-features">
           <li>Capteurs température DS18B20</li>
@@ -484,7 +484,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
 <section class="alt">
   <div class="container">
     <div class="eyebrow">AKILI Automation Language</div>
-    <div class="s-title">Automatiser en langue naturel, sans coder</div>
+    <div class="s-title">Automatiser en français, sans coder</div>
     <div class="s-sub">Le langage AAL permet d'écrire des règles d'automatisation en langage naturel. Un technicien de terrain peut créer et modifier ses propres règles sans programmeur.</div>
   </div>
   <div class="akili-code container">
@@ -568,7 +568,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
       <ul class="price-list">
         <li>10 modules complets</li>
         <li>Simulations en ligne</li>
-        <li>Aperçu de 3 chapitres du livre</li>
+        <li>Aperçu livre 3 chapitres</li>
         <li>Forum communauté</li>
       </ul>
       <button class="btn-price" onclick="window.open('https://liptalink.com','_blank')">Commencer</button>

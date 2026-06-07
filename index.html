@@ -44,7 +44,7 @@ a{text-decoration:none;color:inherit}
 .mobile-nav a:hover{color:var(--green);background:var(--green-light)}
 
 /* HERO */
-.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 55%,#085041 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 55%,#085041 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 5% 60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")}
 .hero-content{max-width:700px;z-index:1;margin:0 auto}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.2);color:#7ee8b8;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(46,204,113,.3);text-transform:uppercase;letter-spacing:.5px}
@@ -60,14 +60,14 @@ a{text-decoration:none;color:inherit}
 .h-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;text-align:center}
 .h-stat-num{font-size:24px;font-weight:700;color:#7ee8b8}
 .h-stat-label{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-.hero-visual{flex:1;display:flex;justify-content:center;align-items:center;z-index:1;padding-left:40px}
-.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;width:300px;backdrop-filter:blur(20px)}
-.hc-title{color:#7ee8b8;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
-.hc-sensor{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:8px;margin-bottom:6px;border:1px solid rgba(255,255,255,.07)}
-.hc-name{color:rgba(255,255,255,.8);font-size:12px}
-.hc-val{color:#7ee8b8;font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px}
-.hc-dot{width:6px;height:6px;border-radius:50%;background:#2ecc71;animation:pulse 1.5s infinite}
-.hc-ok{background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.25);border-radius:8px;padding:10px;margin-top:12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:11px}
+
+
+
+
+
+
+
+
 
 /* SECTIONS */
 section{padding:72px 5%}
@@ -338,15 +338,7 @@ footer{background:var(--dark);padding:44px 5% 24px}
       <div class="h-stat"><div class="h-stat-num">3G</div><div class="h-stat-label">Suffit</div></div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hc-title">⚡ AKILI Platform — Live</div>
-      <div class="hc-sensor"><span class="hc-name">🌡 Chambre froide 1</span><span class="hc-val">4.2°C<span class="hc-dot"></span></span></div>
-      <div class="hc-sensor"><span class="hc-name">❄ Congélateur</span><span class="hc-val">-18.5°C<span class="hc-dot"></span></span></div>
-      <div class="hc-sensor"><span class="hc-name">💧 Humidité sol</span><span class="hc-val">67%<span class="hc-dot"></span></span></div>
-      <div class="hc-sensor"><span class="hc-name">🔋 Batterie solaire</span><span class="hc-val">87%<span class="hc-dot"></span></span></div>
-      <div class="hc-ok">✅ Données locales sur Pi — Aucun cloud requis</div>
-    </div>
+  </div>
   </div>
 </div>
 

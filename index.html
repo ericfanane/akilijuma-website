@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="CrossTech Path — Formation en automatisation industrielle et AKILI Platform IoT pour l'Afrique du Sahel">
+<meta name="description" content="AKILI JUMA — Plateforme IoT industrielle africaine. Automatisation, supervision et formation pour l'Afrique du Sahel.">
 <title>AKILI JUMA — Automatise ton Sahel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,8 +13,7 @@ html{scroll-behavior:smooth}
 :root{
   --green:#0f6e56;--green-dark:#085041;--green-light:#e1f5ee;
   --dark:#0d1117;--dark2:#1a1a2e;--text:#1a1a2e;--sub:#6b7280;
-  --border:#e5e7eb;--white:#ffffff;--accent:#2ecc71;
-  --orange:#f59e0b;--radius:12px;
+  --border:#e5e7eb;--white:#fff;--accent:#2ecc71;--radius:12px;
 }
 body{font-family:'Inter',sans-serif;background:#f9fafb;color:var(--text);line-height:1.6;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
@@ -22,18 +21,18 @@ a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;transition:.3s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;transition:.3s}
 .nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.08)}
 .nav-logo{display:flex;align-items:center;gap:10px}
 .nav-pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
 .nav-brand{font-size:17px;font-weight:700;color:var(--green)}
 .nav-sub{font-size:11px;color:var(--sub);margin-top:-2px}
-.nav-links{display:flex;gap:2px;align-items:center}
-.nav-links a{font-size:13px;font-weight:500;color:var(--sub);padding:8px 14px;border-radius:8px;transition:.2s}
+.nav-links{display:flex;gap:2px}
+.nav-links a{font-size:13px;font-weight:500;color:var(--sub);padding:8px 12px;border-radius:8px;transition:.2s}
 .nav-links a:hover{color:var(--green);background:var(--green-light)}
-.nav-actions{display:flex;gap:10px;align-items:center}
-.btn-nav{font-size:13px;font-weight:600;padding:9px 18px;border-radius:9px;cursor:pointer;border:none;transition:.2s}
+.nav-actions{display:flex;gap:8px}
+.btn-nav{font-size:13px;font-weight:600;padding:9px 16px;border-radius:9px;cursor:pointer;border:none;transition:.2s}
 .btn-nav.outline{background:transparent;color:var(--green);border:1.5px solid var(--green)}
 .btn-nav.solid{background:var(--green);color:#fff}
 .btn-nav:hover{opacity:.85;transform:translateY(-1px)}
@@ -45,414 +44,519 @@ a{text-decoration:none;color:inherit}
 .mobile-nav a:hover{color:var(--green);background:var(--green-light)}
 
 /* HERO */
-.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 50%,#085041 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero{min-height:100vh;background:linear-gradient(135deg,#0d1117 0%,#0f6e56 55%,#085041 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/svg%3E")}
-.hero-content{flex:1;max-width:600px;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.2);color:#7ee8b8;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(46,204,113,.3);letter-spacing:.5px;text-transform:uppercase}
-.hero h1{font-size:clamp(36px,5vw,58px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px}
+.hero-content{flex:1;max-width:580px;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,.2);color:#7ee8b8;font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(46,204,113,.3);text-transform:uppercase;letter-spacing:.5px}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:18px}
 .hero h1 span{color:#7ee8b8;display:block}
-.hero-desc{font-size:17px;color:rgba(255,255,255,.75);line-height:1.8;margin-bottom:36px;max-width:480px}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
-.btn-hero-primary{background:#fff;color:var(--green);font-size:15px;font-weight:700;padding:15px 28px;border-radius:12px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
-.btn-hero-secondary{background:rgba(255,255,255,.12);color:#fff;font-size:15px;font-weight:600;padding:15px 28px;border-radius:12px;border:1.5px solid rgba(255,255,255,.3);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s}
-.btn-hero-secondary:hover{background:rgba(255,255,255,.2)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.hero-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;text-align:center}
-.hero-stat-num{font-size:26px;font-weight:700;color:#7ee8b8}
-.hero-stat-label{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.78);line-height:1.8;margin-bottom:34px;max-width:460px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-hero-p{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:14px 26px;border-radius:12px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.btn-hero-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.btn-hero-s{background:rgba(255,255,255,.12);color:#fff;font-size:14px;font-weight:600;padding:14px 26px;border-radius:12px;border:1.5px solid rgba(255,255,255,.3);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s}
+.btn-hero-s:hover{background:rgba(255,255,255,.2)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.h-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;text-align:center}
+.h-stat-num{font-size:24px;font-weight:700;color:#7ee8b8}
+.h-stat-label{font-size:11px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
 .hero-visual{flex:1;display:flex;justify-content:center;align-items:center;z-index:1;padding-left:40px}
-.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px;width:320px;backdrop-filter:blur(20px)}
-.hero-card-title{color:#7ee8b8;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-.hero-sensor{display:flex;align-items:center;justify-content:space-between;padding:12px;background:rgba(255,255,255,.06);border-radius:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08)}
-.hero-sensor-name{color:rgba(255,255,255,.8);font-size:13px}
-.hero-sensor-val{color:#7ee8b8;font-size:15px;font-weight:700}
-.hero-sensor-dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;margin-left:8px;animation:pulse 1.5s infinite}
-.hero-alert{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);border-radius:10px;padding:12px;margin-top:16px;display:flex;align-items:center;gap:10px}
-.hero-alert-text{color:rgba(255,255,255,.8);font-size:12px}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;width:300px;backdrop-filter:blur(20px)}
+.hc-title{color:#7ee8b8;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.hc-sensor{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:8px;margin-bottom:6px;border:1px solid rgba(255,255,255,.07)}
+.hc-name{color:rgba(255,255,255,.8);font-size:12px}
+.hc-val{color:#7ee8b8;font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px}
+.hc-dot{width:6px;height:6px;border-radius:50%;background:#2ecc71;animation:pulse 1.5s infinite}
+.hc-ok{background:rgba(46,204,113,.12);border:1px solid rgba(46,204,113,.25);border-radius:8px;padding:10px;margin-top:12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:11px}
 
 /* SECTIONS */
-section{padding:80px 5%}
+section{padding:72px 5%}
 section.alt{background:#fff}
 .container{max-width:900px;margin:0 auto}
-.section-eyebrow{font-size:12px;font-weight:700;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
-.section-title{font-size:clamp(24px,3vw,34px);font-weight:700;color:var(--dark);margin-bottom:12px;line-height:1.2}
-.section-sub{font-size:16px;color:var(--sub);line-height:1.8;max-width:600px;margin-bottom:44px}
+.eyebrow{font-size:12px;font-weight:700;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.s-title{font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--dark);margin-bottom:10px;line-height:1.2}
+.s-sub{font-size:15px;color:var(--sub);line-height:1.8;max-width:600px;margin-bottom:40px}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;max-width:900px;margin:0 auto}
+.step{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;transition:.2s}
+.step:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(15,110,86,.08);transform:translateY(-2px)}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.step-icon{font-size:26px;margin-bottom:10px}
+.step-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--sub);line-height:1.6}
+
+/* SOLUTIONS */
+.solutions{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto}
+.solution{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;cursor:pointer}
+.solution:hover{border-color:var(--green);box-shadow:0 8px 30px rgba(15,110,86,.1);transform:translateY(-3px)}
+.sol-header{padding:20px;background:linear-gradient(135deg,var(--green),#085041);text-align:center}
+.sol-icon{font-size:32px;margin-bottom:8px}
+.sol-name{color:#fff;font-size:15px;font-weight:700;margin-bottom:3px}
+.sol-target{color:rgba(255,255,255,.7);font-size:12px}
+.sol-body{padding:18px}
+.sol-features{list-style:none;margin-bottom:16px}
+.sol-features li{font-size:13px;color:#555;padding:4px 0;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.sol-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.btn-sol{width:100%;padding:10px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid var(--green);background:transparent;color:var(--green);transition:.2s}
+.btn-sol:hover{background:var(--green);color:#fff}
+
+/* SUBSCRIPTION BAND */
+.sub-band{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:64px 5%}
+.sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;margin:0 auto;align-items:center}
+.sub-left h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:12px}
+.sub-left p{color:rgba(255,255,255,.7);font-size:15px;line-height:1.8;margin-bottom:24px}
+.sub-features{list-style:none}
+.sub-features li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.sub-features li::before{content:'✓';color:#7ee8b8;font-weight:700;flex-shrink:0}
+.sub-right{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px;text-align:center}
+.sub-label{color:rgba(255,255,255,.5);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.sub-price{font-size:42px;font-weight:800;color:#7ee8b8;line-height:1}
+.sub-unit{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.sub-note{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.6}
+.btn-sub{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:14px 28px;border-radius:12px;border:none;cursor:pointer;width:100%;transition:.2s;margin-bottom:8px}
+.btn-sub:hover{background:var(--green-light)}
+.sub-cta-note{font-size:12px;color:rgba(255,255,255,.35)}
+
+/* AKILI DEMO BAND */
+.demo-band{background:var(--green);padding:56px 5%;text-align:center}
+.demo-band h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:10px}
+.demo-band p{color:rgba(255,255,255,.82);font-size:15px;max-width:500px;margin:0 auto 28px;line-height:1.8}
+.demo-steps{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.demo-step{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:14px 18px;text-align:center;min-width:140px}
+.demo-step-num{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.demo-step-text{color:rgba(255,255,255,.85);font-size:12px;line-height:1.5}
+
+/* AKILI CODE */
+.akili-code{background:var(--dark2);border-radius:16px;padding:24px;max-width:900px;margin:0 auto;font-family:'Courier New',monospace}
+.code-bar{display:flex;gap:6px;margin-bottom:16px;align-items:center}
+.code-dot{width:12px;height:12px;border-radius:50%}
+.code-label{color:rgba(255,255,255,.3);font-size:12px;margin-left:8px}
+.code-line{font-size:13px;margin-bottom:5px;padding:1px 0}
 
 /* MODULES */
 .modules{display:flex;flex-direction:column;gap:8px;max-width:900px;margin:0 auto}
-.module{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:18px;transition:.2s}
-.module:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(15,110,86,.08);transform:translateX(4px)}
-.module-num{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.module-body{flex:1}
-.module-title{font-size:15px;font-weight:600;margin-bottom:3px}
-.module-desc{font-size:13px;color:var(--sub)}
-.module-tags{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
-.tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.module{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:16px;transition:.2s}
+.module:hover{border-color:var(--green);transform:translateX(4px);box-shadow:0 4px 20px rgba(15,110,86,.08)}
+.mod-num{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mod-body{flex:1}
+.mod-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.mod-desc{font-size:12px;color:var(--sub)}
+.mod-tags{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
 .tag-sim{background:#e1f5ee;color:#085041}
 .tag-hw{background:#fef3c7;color:#92400e}
 .tag-akili{background:#ede9fe;color:#5b21b6}
 .tag-video{background:#e0f2fe;color:#0c4a6e}
-.tag-projet{background:#fce7f3;color:#9d174d}
+.tag-biz{background:#fce7f3;color:#9d174d}
 .access-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;max-width:900px;margin-left:auto;margin-right:auto}
-.btn-access{flex:1;min-width:200px;padding:16px 24px;border-radius:var(--radius);font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;border:none;transition:.2s}
+.btn-access{flex:1;min-width:180px;padding:14px 20px;border-radius:var(--radius);font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;border:none;transition:.2s}
 .btn-access:hover{transform:translateY(-2px)}
 .btn-direct{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(15,110,86,.3)}
 .btn-lip{background:var(--green-light);color:var(--green);border:1.5px solid #b9e0d0}
 
 /* BOOK */
-.book-section{background:linear-gradient(135deg,#0d1117,#1a1a2e);padding:80px 5%}
-.book-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:60px;align-items:start;max-width:900px;margin:0 auto}
-.book-mockup{position:sticky;top:100px}
-.book-cover{background:linear-gradient(145deg,var(--green),#085041);border-radius:8px 16px 16px 8px;padding:32px 24px;box-shadow:-8px 8px 0 #053a2d,0 20px 60px rgba(0,0,0,.5);position:relative;min-height:340px;display:flex;flex-direction:column;justify-content:space-between}
-.book-cover::before{content:'';position:absolute;left:0;top:0;bottom:0;width:20px;background:linear-gradient(90deg,rgba(0,0,0,.3),transparent);border-radius:8px 0 0 8px}
-.book-cover-title{color:#fff;font-size:22px;font-weight:800;line-height:1.2;margin-bottom:8px}
-.book-cover-sub{color:#7ee8b8;font-size:13px;line-height:1.5}
-.book-cover-author{color:rgba(255,255,255,.7);font-size:13px;margin-top:20px}
-.book-cover-icon{font-size:48px;color:rgba(255,255,255,.15);position:absolute;bottom:24px;right:24px}
-.book-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.book-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2)}
-.book-info .section-eyebrow{color:#7ee8b8}
-.book-info .section-title{color:#fff;font-size:28px}
-.book-info .section-sub{color:rgba(255,255,255,.7);margin-bottom:24px}
-.book-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
-.book-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;text-align:center}
-.book-stat-num{font-size:22px;font-weight:700;color:#7ee8b8}
-.book-stat-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
-.book-toc{margin-bottom:28px}
-.book-toc-title{color:rgba(255,255,255,.6);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
-.book-toc-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.book-toc-num{width:24px;height:24px;border-radius:50%;background:rgba(15,110,86,.4);color:#7ee8b8;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.book-toc-text{color:rgba(255,255,255,.7);font-size:13px}
-.book-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
-.book-option{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:.2s}
-.book-option:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
-.book-option-icon{font-size:24px;flex-shrink:0}
+.book-section{background:linear-gradient(135deg,#0d1117,#1a1a2e);padding:72px 5%}
+.book-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start;max-width:900px;margin:0 auto}
+.book-cover{background:linear-gradient(145deg,var(--green),#085041);border-radius:8px 16px 16px 8px;padding:28px 22px;box-shadow:-8px 8px 0 #053a2d,0 20px 60px rgba(0,0,0,.5);min-height:300px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.book-cover::before{content:'';position:absolute;left:0;top:0;bottom:0;width:18px;background:linear-gradient(90deg,rgba(0,0,0,.3),transparent);border-radius:8px 0 0 8px}
+.book-cover-title{color:#fff;font-size:20px;font-weight:800;line-height:1.2;margin-bottom:8px}
+.book-cover-sub{color:#7ee8b8;font-size:12px;line-height:1.5}
+.book-cover-author{color:rgba(255,255,255,.7);font-size:12px;margin-top:16px}
+.book-cover-icon{font-size:40px;color:rgba(255,255,255,.12);position:absolute;bottom:20px;right:20px}
+.book-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.book-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:10px;font-weight:600;padding:4px 10px;border-radius:16px;border:1px solid rgba(255,255,255,.2)}
+.book-info .eyebrow{color:#7ee8b8}
+.book-info .s-title{color:#fff;font-size:24px}
+.book-info .s-sub{color:rgba(255,255,255,.65);margin-bottom:20px}
+.book-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.book-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px;text-align:center}
+.book-stat-num{font-size:20px;font-weight:700;color:#7ee8b8}
+.book-stat-label{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px}
+.book-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.book-option{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.2s}
+.book-option:hover{background:rgba(255,255,255,.1)}
+.book-option-icon{font-size:22px;flex-shrink:0}
 .book-option-body{flex:1}
-.book-option-title{color:#fff;font-size:14px;font-weight:600;margin-bottom:2px}
-.book-option-desc{color:rgba(255,255,255,.5);font-size:12px}
-.book-option-price{font-size:16px;font-weight:700;color:#7ee8b8;flex-shrink:0}
-.book-note{color:rgba(255,255,255,.4);font-size:12px;text-align:center;margin-top:8px}
+.book-option-title{color:#fff;font-size:13px;font-weight:600;margin-bottom:2px}
+.book-option-desc{color:rgba(255,255,255,.5);font-size:11px}
+.book-option-price{font-size:14px;font-weight:700;color:#7ee8b8;flex-shrink:0}
 
-/* AKILI */
-.akili-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto 40px}
-.akili-feat{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:.2s}
-.akili-feat:hover{border-color:var(--green);box-shadow:0 4px 20px rgba(15,110,86,.08)}
-.akili-feat-icon{font-size:28px;margin-bottom:12px}
-.akili-feat-title{font-size:14px;font-weight:700;margin-bottom:6px}
-.akili-feat-desc{font-size:13px;color:var(--sub);line-height:1.6}
-.akili-demo{background:var(--dark2);border-radius:16px;padding:24px;max-width:900px;margin:0 auto;font-family:'Courier New',monospace}
-.akili-demo-bar{display:flex;gap:6px;margin-bottom:16px}
-.akili-demo-dot{width:12px;height:12px;border-radius:50%}
-.akili-demo-line{font-size:13px;margin-bottom:6px}
-
-/* PRICING */
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;max-width:900px;margin:0 auto}
-.price-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:.2s;position:relative}
-.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(15,110,86,.12)}
-.price-card.featured{border-color:var(--green);box-shadow:0 8px 30px rgba(15,110,86,.15)}
-.featured-ribbon{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:0 0 10px 10px;letter-spacing:.5px}
-.price-icon{font-size:32px;margin-bottom:12px;display:block}
-.price-name{font-size:13px;color:var(--sub);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
-.price-amount{font-size:32px;font-weight:800;color:var(--green);line-height:1}
-.price-fcfa{font-size:13px;color:var(--sub);margin-bottom:4px}
-.price-period{font-size:12px;color:#aaa;margin-bottom:20px}
-.price-list{list-style:none;text-align:left;margin-bottom:22px}
-.price-list li{font-size:13px;color:#444;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+/* PRICING CARDS */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:900px;margin:0 auto}
+.price-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:22px;text-align:center;transition:.2s;position:relative}
+.price-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(15,110,86,.1)}
+.price-card.featured{border-color:var(--green)}
+.featured-ribbon{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:0 0 10px 10px}
+.price-icon{font-size:28px;margin-bottom:10px;display:block}
+.price-name{font-size:12px;color:var(--sub);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.price-amount{font-size:26px;font-weight:800;color:var(--green);line-height:1}
+.price-fcfa{font-size:12px;color:var(--sub);margin-bottom:4px}
+.price-period{font-size:11px;color:#aaa;margin-bottom:16px}
+.price-list{list-style:none;text-align:left;margin-bottom:20px}
+.price-list li{font-size:12px;color:#444;padding:4px 0;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
 .price-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
-.btn-price{width:100%;padding:12px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;border:1.5px solid var(--border);background:#fff;color:var(--text)}
+.btn-price{width:100%;padding:11px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;border:1.5px solid var(--border);background:#fff;color:var(--text)}
 .btn-price:hover{border-color:var(--green);color:var(--green)}
 .btn-price.primary{background:var(--green);color:#fff;border:none}
 .btn-price.primary:hover{background:var(--green-dark)}
 
 /* TUTOR */
-.tutor-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;display:flex;gap:32px;align-items:flex-start;max-width:900px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-.tutor-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2ecc71);display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;flex-shrink:0}
-.tutor-right{flex:1}
-.tutor-name{font-size:22px;font-weight:700;margin-bottom:4px}
-.tutor-role{font-size:14px;color:var(--sub);margin-bottom:16px}
-.tutor-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tutor-tag{font-size:12px;background:var(--green-light);color:var(--green-dark);padding:5px 12px;border-radius:20px;font-weight:500}
-.tutor-bio{font-size:14px;color:#555;line-height:1.8;margin-bottom:20px}
-.tutor-actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn-tutor{padding:12px 20px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+.tutor-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px;display:flex;gap:28px;align-items:flex-start;max-width:900px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.tutor-avatar{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2ecc71);display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;flex-shrink:0}
+.tutor-name{font-size:20px;font-weight:700;margin-bottom:4px}
+.tutor-role{font-size:13px;color:var(--sub);margin-bottom:14px}
+.tutor-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.tutor-tag{font-size:12px;background:var(--green-light);color:var(--green-dark);padding:4px 11px;border-radius:16px;font-weight:500}
+.tutor-bio{font-size:14px;color:#555;line-height:1.8;margin-bottom:18px}
+.tutor-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-tutor{padding:11px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:.2s;display:inline-flex;align-items:center;gap:6px}
 .btn-tutor.primary{background:var(--green);color:#fff}
 .btn-tutor.secondary{background:var(--green-light);color:var(--green);border:1.5px solid #b9e0d0}
 .btn-tutor:hover{transform:translateY(-1px)}
 
-/* TOOLS */
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;max-width:900px;margin:0 auto}
-.tool{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;transition:.2s}
-.tool:hover{border-color:var(--green);transform:translateY(-2px)}
-.tool-icon{font-size:32px;margin-bottom:10px;display:block}
-.tool-name{font-size:13px;font-weight:700;margin-bottom:4px}
-.tool-desc{font-size:12px;color:var(--sub);margin-bottom:8px}
-.tool-free{font-size:11px;background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:10px;font-weight:600;display:inline-block}
-
 /* FAQ */
 .faq{max-width:900px;margin:0 auto}
 .faq-item{border-bottom:1px solid var(--border)}
-.faq-q{padding:20px 0;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q{padding:18px 0;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .faq-q:hover{color:var(--green)}
 .faq-toggle{font-size:20px;color:var(--green);transition:.3s;flex-shrink:0}
 .faq-a{font-size:14px;color:var(--sub);line-height:1.8;max-height:0;overflow:hidden;transition:.3s}
-.faq-item.open .faq-a{max-height:200px;padding-bottom:20px}
+.faq-item.open .faq-a{max-height:250px;padding-bottom:18px}
 .faq-item.open .faq-toggle{transform:rotate(45deg)}
 
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto 32px}
-.contact-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:22px;text-align:center;transition:.2s}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-width:900px;margin:0 auto}
+.contact-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;transition:.2s}
 .contact-card:hover{border-color:var(--green);transform:translateY(-2px)}
-.contact-icon{font-size:28px;margin-bottom:10px;display:block}
-.contact-label{font-size:12px;color:var(--sub);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
-.contact-value{font-size:14px;font-weight:700;color:var(--green)}
+.contact-icon{font-size:26px;margin-bottom:8px;display:block}
+.contact-label{font-size:11px;color:var(--sub);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.contact-value{font-size:13px;font-weight:700;color:var(--green)}
 
-/* NEWSLETTER */
-.newsletter{background:var(--green);border-radius:20px;padding:40px;text-align:center;max-width:900px;margin:0 auto}
-.newsletter h3{color:#fff;font-size:22px;font-weight:700;margin-bottom:8px}
-.newsletter p{color:rgba(255,255,255,.8);font-size:14px;margin-bottom:24px}
-.newsletter-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap}
-.newsletter-input{flex:1;min-width:200px;padding:13px 18px;border-radius:10px;border:none;font-size:14px;outline:none}
-.newsletter-btn{background:#fff;color:var(--green);font-size:14px;font-weight:700;padding:13px 22px;border-radius:10px;border:none;cursor:pointer}
+/* CTA BAND */
+.cta-band{background:var(--green);padding:56px 5%;text-align:center}
+.cta-band h2{color:#fff;font-size:26px;font-weight:700;margin-bottom:10px}
+.cta-band p{color:rgba(255,255,255,.82);font-size:15px;max-width:480px;margin:0 auto 28px;line-height:1.8}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* FOOTER */
-footer{background:var(--dark);padding:48px 5% 24px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:900px;margin:0 auto 40px}
-.footer-brand{font-size:20px;font-weight:800;color:#7ee8b8;margin-bottom:8px}
-.footer-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:16px}
-.footer-social{display:flex;gap:10px}
-.footer-social a{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:16px;transition:.2s}
+footer{background:var(--dark);padding:44px 5% 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;max-width:900px;margin:0 auto 36px}
+.footer-brand{font-size:18px;font-weight:800;color:#7ee8b8;margin-bottom:8px}
+.footer-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:14px}
+.footer-social{display:flex;gap:8px}
+.footer-social a{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-size:15px;transition:.2s}
 .footer-social a:hover{background:var(--green);color:#fff}
-.footer-col-title{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:8px}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.55);transition:.2s}
+.footer-col-title{font-size:11px;font-weight:700;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.5);transition:.2s}
 .footer-links a:hover{color:#7ee8b8}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;gap:12px;flex-wrap:wrap}
-.footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;flex-wrap:wrap;gap:10px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.25)}
 
-/* FLOATING WA */
-.wa-float{position:fixed;bottom:24px;right:24px;z-index:999;width:56px;height:56px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:.2s;text-decoration:none}
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:999;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:.2s;text-decoration:none}
 .wa-float:hover{transform:scale(1.1)}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.open{display:flex}
-.modal-box{background:#fff;border-radius:20px;padding:36px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#888}
+.modal-box{background:#fff;border-radius:20px;padding:32px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;font-size:22px;cursor:pointer;color:#aaa}
+.modal-h{color:var(--green);font-size:18px;font-weight:700;margin-bottom:10px}
+.modal-p{color:#555;font-size:14px;line-height:1.8;margin-bottom:16px}
+.modal-info{background:var(--green-light);border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041;line-height:1.8}
+.btn-wa{display:block;background:#25d366;color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;font-size:14px;margin-bottom:8px;text-decoration:none}
+.btn-wa:hover{opacity:.9}
+.btn-em{display:block;background:var(--green);color:#fff;text-align:center;padding:13px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none}
+.btn-em:hover{background:var(--green-dark)}
 
 /* RESPONSIVE */
 @media(max-width:768px){
   .nav-links,.nav-actions{display:none}
   .burger{display:flex}
-  .hero{flex-direction:column;text-align:center;padding:100px 5% 60px}
+  .hero{flex-direction:column;text-align:center;padding:90px 5% 50px}
   .hero-visual{display:none}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .hero-btns{justify-content:center}
-  .hero-desc{margin:0 auto 36px}
+  .hero-desc{margin:0 auto 32px}
   .book-grid{grid-template-columns:1fr}
-  .book-mockup{position:static}
   .tutor-card{flex-direction:column}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-grid>:first-child{grid-column:1/-1}
+  .sub-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<a href="https://wa.me/46729394171" target="_blank" class="wa-float" title="WhatsApp">💬</a>
+<a href="https://wa.me/46729394171" target="_blank" class="wa-float">💬</a>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-logo">
     <div class="nav-pulse"></div>
-    <div>
-      <div class="nav-brand">AKILI JUMA</div>
-      <div class="nav-sub">CrossTech Path</div>
-    </div>
+    <div><div class="nav-brand">AKILI JUMA</div><div class="nav-sub">CrossTech Path</div></div>
   </div>
   <div class="nav-links">
-    <a href="#cours">Cours</a>
+    <a href="#solution">Solution</a>
+    <a href="#kits">Kits</a>
+    <a href="#formation">Formation</a>
     <a href="#livre">Livre</a>
-    <a href="#akili">AKILI</a>
-    <a href="#tarifs">Tarifs</a>
-    <a href="#tuteur">Formateur</a>
+    <a href="#formateur">Formateur</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-actions">
     <button class="btn-nav outline" onclick="showModal('demo')">📅 Demander une démo</button>
-    <button class="btn-nav solid" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">Commencer →</button>
+    <button class="btn-nav solid" onclick="showModal('devis')">💬 Devis gratuit</button>
   </div>
   <button class="burger" id="burger"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-nav" id="mobilenav">
-  <a href="#cours" onclick="closeMobile()">Cours</a>
+  <a href="#solution" onclick="closeMobile()">Solution</a>
+  <a href="#kits" onclick="closeMobile()">Kits</a>
+  <a href="#formation" onclick="closeMobile()">Formation</a>
   <a href="#livre" onclick="closeMobile()">Livre</a>
-  <a href="#akili" onclick="closeMobile()">AKILI</a>
-  <a href="#tarifs" onclick="closeMobile()">Tarifs</a>
-  <a href="#tuteur" onclick="closeMobile()">Formateur</a>
+  <a href="#formateur" onclick="closeMobile()">Formateur</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🌍 Alliance des États du Sahel — AES</div>
+    <div class="hero-badge">🌍 Solution industrielle pour l'Afrique du Sahel</div>
     <h1>Automatise<span>ton Sahel</span></h1>
-    <p class="hero-desc">La première formation complète en automatisation industrielle conçue pour les jeunes d'Afrique. Arduino, Raspberry Pi, IEC 61131-3 et AKILI Platform. 100% en ligne, accessible sur smartphone.</p>
+    <p class="hero-desc">Plateforme IoT industrielle sur Raspberry Pi. Connectez vos capteurs réels, supervisez depuis votre smartphone, alertes SMS automatiques. Zéro cloud — vos données restent sur site.</p>
     <div class="hero-btns">
-      <button class="btn-hero-primary" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">▶ Commencer gratuitement</button>
-      <button class="btn-hero-secondary" onclick="showModal('demo')">📅 Demander une démonstration</button>
+      <button class="btn-hero-p" onclick="document.getElementById('kits').scrollIntoView({behavior:'smooth'})">🔧 Découvrir les solutions</button>
+      <button class="btn-hero-s" onclick="showModal('demo')">📅 Demander une démonstration</button>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Modules</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">24h</div><div class="hero-stat-label">Formation</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">0 FCFA</div><div class="hero-stat-label">Pour commencer</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">3G</div><div class="hero-stat-label">Suffit</div></div>
+      <div class="h-stat"><div class="h-stat-num">16</div><div class="h-stat-label">Modules</div></div>
+      <div class="h-stat"><div class="h-stat-num">0€</div><div class="h-stat-label">Cloud</div></div>
+      <div class="h-stat"><div class="h-stat-num">24/7</div><div class="h-stat-label">Local</div></div>
+      <div class="h-stat"><div class="h-stat-num">3G</div><div class="h-stat-label">Suffit</div></div>
     </div>
   </div>
   <div class="hero-visual">
     <div class="hero-card">
-      <div class="hero-card-title">⚡ AKILI Platform — Live</div>
-      <div class="hero-sensor"><span class="hero-sensor-name">🌡 Chambre froide 1</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">4.2°C</span><span class="hero-sensor-dot"></span></span></div>
-      <div class="hero-sensor"><span class="hero-sensor-name">❄ Congélateur</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">-18.5°C</span><span class="hero-sensor-dot"></span></span></div>
-      <div class="hero-sensor"><span class="hero-sensor-name">💧 Humidité sol</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">67%</span><span class="hero-sensor-dot"></span></span></div>
-      <div class="hero-sensor"><span class="hero-sensor-name">🔋 Batterie solaire</span><span style="display:flex;align-items:center"><span class="hero-sensor-val">87%</span><span class="hero-sensor-dot"></span></span></div>
-      <div class="hero-alert"><span style="font-size:18px">✅</span><span class="hero-alert-text">Tous les systèmes normaux — Dernière vérification il y a 10s</span></div>
+      <div class="hc-title">⚡ AKILI Platform — Live</div>
+      <div class="hc-sensor"><span class="hc-name">🌡 Chambre froide 1</span><span class="hc-val">4.2°C<span class="hc-dot"></span></span></div>
+      <div class="hc-sensor"><span class="hc-name">❄ Congélateur</span><span class="hc-val">-18.5°C<span class="hc-dot"></span></span></div>
+      <div class="hc-sensor"><span class="hc-name">💧 Humidité sol</span><span class="hc-val">67%<span class="hc-dot"></span></span></div>
+      <div class="hc-sensor"><span class="hc-name">🔋 Batterie solaire</span><span class="hc-val">87%<span class="hc-dot"></span></span></div>
+      <div class="hc-ok">✅ Données locales sur Pi — Aucun cloud requis</div>
     </div>
   </div>
 </div>
 
-<!-- COURS -->
-<section id="cours">
+<!-- COMMENT CA MARCHE -->
+<section id="solution">
   <div class="container">
-    <div class="section-eyebrow">Le cours</div>
-    <div class="section-title">10 modules — du capteur au système industriel</div>
-    <div class="section-sub">Chaque module alterne théorie, simulation en ligne et pratique hardware. Conçu pour fonctionner sur smartphone avec connexion 3G. Exemples tirés de la réalité du Sahel.</div>
+    <div class="eyebrow">Comment ça marche</div>
+    <div class="s-title">Un système embarqué — pas un abonnement cloud</div>
+    <div class="s-sub">AKILI tourne entièrement en local sur le Raspberry Pi chez votre client. Vous l'installez, vous le configurez, vous maintenez à distance. Vos clients paient un abonnement mensuel pour le service — pas pour un hébergement cloud.</div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-icon">📦</div><div class="step-title">Kit hardware livré</div><div class="step-desc">Raspberry Pi 5 avec AKILI pré-installé, capteurs adaptés à votre secteur, boitier industriel.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-icon">🔌</div><div class="step-title">Installation sur site</div><div class="step-desc">Vous connectez les capteurs physiques réels et configurez les modules, seuils et règles AAL.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-icon">📱</div><div class="step-title">Supervision smartphone</div><div class="step-desc">Dashboard web, alertes SMS, rapports HACCP. Fonctionne sans internet permanent grâce au GSM.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-icon">🛠</div><div class="step-title">Maintenance à distance</div><div class="step-desc">Accès SSH via Tailscale VPN depuis partout. Mises à jour et dépannage sans déplacement.</div></div>
+  </div>
+</section>
+
+<!-- SOLUTIONS SECTORIELLES -->
+<section id="kits" class="alt">
+  <div class="container">
+    <div class="eyebrow">Solutions par secteur</div>
+    <div class="s-title">AKILI s'adapte à votre activité</div>
+    <div class="s-sub">Chaque solution inclut le matériel, AKILI pré-configuré pour votre secteur, et l'accompagnement à l'installation. Le prix est établi sur devis selon vos besoins spécifiques.</div>
+  </div>
+  <div class="solutions">
+    <div class="solution" onclick="showModal('sol-cold')">
+      <div class="sol-header"><div class="sol-icon">❄️</div><div class="sol-name">Cold Chain</div><div class="sol-target">Pharmacies · Dispensaires · Entrepôts</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Capteurs température DS18B20</li>
+          <li>Alertes SMS dépassement seuil</li>
+          <li>Logs HACCP automatiques</li>
+          <li>Détection coupure électrique</li>
+          <li>Rapports quotidiens par email</li>
+        </ul>
+        <button class="btn-sol">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="solution" onclick="showModal('sol-agri')">
+      <div class="sol-header"><div class="sol-icon">🌱</div><div class="sol-name">Agriculture</div><div class="sol-target">Fermes · Maraîchage · Serres</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Capteurs humidité sol multi-zones</li>
+          <li>Irrigation automatique programmée</li>
+          <li>Capteur température et humidité air</li>
+          <li>Relais commande pompes</li>
+          <li>Rapport consommation eau</li>
+        </ul>
+        <button class="btn-sol">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="solution" onclick="showModal('sol-solar')">
+      <div class="sol-header"><div class="sol-icon">☀️</div><div class="sol-name">Énergie Solaire</div><div class="sol-target">Villages · Sites isolés · Bâtiments</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Mesure tension et courant batterie</li>
+          <li>Gestion intelligente des charges</li>
+          <li>Alertes batterie critique par SMS</li>
+          <li>Historique production 30 jours</li>
+          <li>Coupures programmées automatiques</li>
+        </ul>
+        <button class="btn-sol">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="solution" onclick="showModal('sol-water')">
+      <div class="sol-header"><div class="sol-icon">💧</div><div class="sol-name">Gestion de l'Eau</div><div class="sol-target">Forages · Châteaux d'eau · AEP</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Capteur niveau citerne</li>
+          <li>Pompage automatique</li>
+          <li>Surveillance qualité eau</li>
+          <li>Alertes fuites et anomalies</li>
+          <li>Rapport mensuel consommation</li>
+        </ul>
+        <button class="btn-sol">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="solution" onclick="showModal('sol-health')">
+      <div class="sol-header"><div class="sol-icon">🏥</div><div class="sol-name">Santé</div><div class="sol-target">Hôpitaux · Centres de santé · Labo</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Chambres froides médicales</li>
+          <li>Contrôle salles d'opération</li>
+          <li>Conformité normes OMS</li>
+          <li>Alertes 24h/24 — 7j/7</li>
+          <li>Traçabilité complète HACCP</li>
+        </ul>
+        <button class="btn-sol">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="solution" onclick="showModal('sol-custom')">
+      <div class="sol-header"><div class="sol-icon">⚙️</div><div class="sol-name">Sur mesure</div><div class="sol-target">Industrie · ONG · Secteur public</div></div>
+      <div class="sol-body">
+        <ul class="sol-features">
+          <li>Analyse de vos besoins spécifiques</li>
+          <li>Configuration modules personnalisés</li>
+          <li>Intégration équipements existants</li>
+          <li>Règles AAL sur mesure</li>
+          <li>Formation équipe technique</li>
+        </ul>
+        <button class="btn-sol">Discutons de votre projet →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABONNEMENT MENSUEL -->
+<div class="sub-band">
+  <div class="sub-grid container">
+    <div class="sub-left">
+      <h2>Abonnement mensuel AKILI</h2>
+      <p>Vos clients paient un abonnement mensuel pour la maintenance, le support technique, les mises à jour logicielles et la supervision à distance. Vous encaissez — CrossTech Path vous supporte.</p>
+      <ul class="sub-features">
+        <li>Surveillance à distance via Tailscale VPN</li>
+        <li>Mises à jour AKILI automatiques</li>
+        <li>Support technique WhatsApp prioritaire</li>
+        <li>Rapport mensuel envoyé au client</li>
+        <li>Remplacement capteurs défectueux inclus</li>
+        <li>Nouvelles règles AAL sur demande</li>
+      </ul>
+    </div>
+    <div class="sub-right">
+      <div class="sub-label">Abonnement client</div>
+      <div class="sub-price">Sur devis</div>
+      <div class="sub-unit">FCFA / mois</div>
+      <div class="sub-note">Le tarif dépend du nombre de capteurs, du secteur d'activité et du niveau de service souhaité. Contactez-nous pour établir le contrat adapté.</div>
+      <button class="btn-sub" onclick="showModal('sub')">💬 Discuter du tarif</button>
+      <div class="sub-cta-note">Devis gratuit sous 24h</div>
+    </div>
+  </div>
+</div>
+
+<!-- AAL CODE -->
+<section class="alt">
+  <div class="container">
+    <div class="eyebrow">AKILI Automation Language</div>
+    <div class="s-title">Automatiser en français, sans coder</div>
+    <div class="s-sub">Le langage AAL permet d'écrire des règles d'automatisation en langage naturel. Un technicien de terrain peut créer et modifier ses propres règles sans programmeur.</div>
+  </div>
+  <div class="akili-code container">
+    <div class="code-bar">
+      <div class="code-dot" style="background:#ff5f57"></div>
+      <div class="code-dot" style="background:#febc2e"></div>
+      <div class="code-dot" style="background:#28c840"></div>
+      <span class="code-label">AAL — AKILI Automation Language — Règles en français naturel</span>
+    </div>
+    <div class="code-line" style="color:#4d9e78">// Alerte cold chain — pharmacie Ouagadougou</div>
+    <div class="code-line"><span style="color:#569cd6">REGLE</span>: <span style="color:#ce9178">alerte_temperature_critique</span></div>
+    <div class="code-line"><span style="color:#569cd6">SI</span>: <span style="color:#fff">fridge_1 > 8.0 ET depuis 5 minutes</span></div>
+    <div class="code-line"><span style="color:#569cd6">ALORS</span>: <span style="color:#ce9178">SMS +22670000000 "⚠ Alerte! Temp {fridge_1}°C dépasse 8°C"</span></div>
+    <div class="code-line" style="padding-left:48px;color:#ce9178">EMAIL responsable@pharmacie.bf "Rapport température critique"</div>
+    <div class="code-line" style="padding-left:48px;color:#ce9178">ALARME priorité haute</div>
+    <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px">
+    <div class="code-line" style="color:#4d9e78">// Irrigation automatique — ferme maraîchère</div>
+    <div class="code-line"><span style="color:#569cd6">REGLE</span>: <span style="color:#ce9178">irrigation_matin</span></div>
+    <div class="code-line"><span style="color:#569cd6">SI</span>: <span style="color:#fff">heure == 06:00 ET humidite_sol &lt; 40</span></div>
+    <div class="code-line"><span style="color:#569cd6">ALORS</span>: <span style="color:#ce9178">RELAIS pompe_principale ON pendant 30 minutes</span></div>
+    </div>
+    <div class="code-line" style="margin-top:12px;color:rgba(255,255,255,.2)">// SMS envoyé en 3 secondes — aucun code requis — fonctionne sans internet</div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<div class="demo-band">
+  <h2>📅 Comment fonctionne la démonstration</h2>
+  <p>AKILI est un système industriel local avec de vrais capteurs. La démo se fait en session personnalisée — pas une simulation en ligne.</p>
+  <div class="demo-steps">
+    <div class="demo-step"><div class="demo-step-num">1</div><div class="demo-step-text">Vous nous contactez sur WhatsApp ou email</div></div>
+    <div class="demo-step"><div class="demo-step-num">2</div><div class="demo-step-text">Nous planifions 30 min selon votre secteur</div></div>
+    <div class="demo-step"><div class="demo-step-num">3</div><div class="demo-step-text">Vous voyez AKILI live avec capteurs réels</div></div>
+    <div class="demo-step"><div class="demo-step-num">4</div><div class="demo-step-text">Questions-réponses avec Eric Fanane</div></div>
+  </div>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <button class="btn-hero-p" onclick="showModal('demo')">📅 Demander une démonstration</button>
+    <button class="btn-hero-s" onclick="showModal('installer')">🔧 Devenir installateur AKILI</button>
+  </div>
+</div>
+
+<!-- FORMATION -->
+<section id="formation">
+  <div class="container">
+    <div class="eyebrow">Formation</div>
+    <div class="s-title">Automatise ton Sahel — 10 modules en ligne</div>
+    <div class="s-sub">Du capteur au système industriel. Formation complète pour comprendre l'automatisation et installer AKILI chez vos clients. 100% en ligne, accessible sur smartphone.</div>
   </div>
   <div class="modules">
-    <div class="module"><div class="module-num">1</div><div class="module-body"><div class="module-title">L'automatisation au Sahel — Pourquoi c'est urgent</div><div class="module-desc">Eau, vaccins, énergie, agriculture — des problèmes que l'automatisation peut résoudre</div></div><div class="module-tags"><span class="tag tag-video">Vidéo</span></div></div>
-    <div class="module"><div class="module-num">2</div><div class="module-body"><div class="module-title">Les bases : capteurs, actionneurs, automates</div><div class="module-desc">Le cycle fondamental : mesurer — décider — agir</div></div><div class="module-tags"><span class="tag tag-sim">Simulation</span></div></div>
-    <div class="module"><div class="module-num">3</div><div class="module-body"><div class="module-title">Arduino C++ : votre premier programme</div><div class="module-desc">Structure setup/loop, DHT22, thermostat avec hysteresis</div></div><div class="module-tags"><span class="tag tag-hw">Hardware</span><span class="tag tag-sim">Wokwi</span></div></div>
-    <div class="module"><div class="module-num">4</div><div class="module-body"><div class="module-title">Irrigation automatique — économiser l'eau du Sahel</div><div class="module-desc">Capteur d'humidité sol, pompe, timer non bloquant avec millis()</div></div><div class="module-tags"><span class="tag tag-hw">Hardware</span></div></div>
-    <div class="module"><div class="module-num">5</div><div class="module-body"><div class="module-title">Énergie solaire — gérer la batterie automatiquement</div><div class="module-desc">ADS1115, INA219, états de charge, village hors réseau</div></div><div class="module-tags"><span class="tag tag-hw">Hardware</span></div></div>
-    <div class="module"><div class="module-num">6</div><div class="module-body"><div class="module-title">IEC 61131-3 : Ladder Diagram et Structured Text</div><div class="module-desc">Standard industriel mondial — lire et écrire des programmes PLC</div></div><div class="module-tags"><span class="tag tag-sim">OpenPLC</span></div></div>
-    <div class="module"><div class="module-num">7</div><div class="module-body"><div class="module-title">Raspberry Pi comme automate industriel</div><div class="module-desc">GPIO, I2C, 1-Wire, OpenPLC Runtime, accès distant depuis smartphone</div></div><div class="module-tags"><span class="tag tag-hw">Hardware</span></div></div>
-    <div class="module"><div class="module-num">8</div><div class="module-body"><div class="module-title">AKILI Platform — automatiser sans coder</div><div class="module-desc">Langage AAL, règles en français naturel, 16 modules industriels</div></div><div class="module-tags"><span class="tag tag-akili">AKILI</span></div></div>
-    <div class="module"><div class="module-num">9</div><div class="module-body"><div class="module-title">Projet Sahel — votre application réelle</div><div class="module-desc">Cold chain, irrigation, énergie solaire, eau potable, grenier céréalier</div></div><div class="module-tags"><span class="tag tag-projet">Projet</span></div></div>
-    <div class="module"><div class="module-num">10</div><div class="module-body"><div class="module-title">Devenir installateur AKILI — créer votre activité</div><div class="module-desc">Clients cibles, revenus récurrents en FCFA, réseau partenaires</div></div><div class="module-tags"><span class="tag tag-akili">Business</span></div></div>
+    <div class="module"><div class="mod-num">1</div><div class="mod-body"><div class="mod-title">L'automatisation au Sahel — pourquoi c'est urgent</div><div class="mod-desc">Eau, vaccins, énergie, agriculture — problèmes réels, solutions concrètes</div></div><div class="mod-tags"><span class="tag tag-video">Vidéo</span></div></div>
+    <div class="module"><div class="mod-num">2</div><div class="mod-body"><div class="mod-title">Les bases : capteurs, actionneurs, automates</div><div class="mod-desc">Le cycle fondamental : mesurer — décider — agir</div></div><div class="mod-tags"><span class="tag tag-sim">Simulation</span></div></div>
+    <div class="module"><div class="mod-num">3</div><div class="mod-body"><div class="mod-title">Arduino C++ : votre premier programme</div><div class="mod-desc">Setup/loop, DHT22, thermostat avec hysteresis sur Wokwi</div></div><div class="mod-tags"><span class="tag tag-hw">Hardware</span></div></div>
+    <div class="module"><div class="mod-num">4</div><div class="mod-body"><div class="mod-title">Irrigation automatique — économiser l'eau</div><div class="mod-desc">Capteurs sol capacitifs, pompes, timer non bloquant avec millis()</div></div><div class="mod-tags"><span class="tag tag-hw">Hardware</span></div></div>
+    <div class="module"><div class="mod-num">5</div><div class="mod-body"><div class="mod-title">Énergie solaire — gérer la batterie automatiquement</div><div class="mod-desc">ADS1115, INA219, machine à états, village hors réseau</div></div><div class="mod-tags"><span class="tag tag-hw">Hardware</span></div></div>
+    <div class="module"><div class="mod-num">6</div><div class="mod-body"><div class="mod-title">IEC 61131-3 : Ladder Diagram et Structured Text</div><div class="mod-desc">Standard industriel mondial — lire et écrire des programmes PLC</div></div><div class="mod-tags"><span class="tag tag-sim">OpenPLC</span></div></div>
+    <div class="module"><div class="mod-num">7</div><div class="mod-body"><div class="mod-title">Raspberry Pi comme automate industriel</div><div class="mod-desc">GPIO, I2C, 1-Wire, OpenPLC Runtime, accès Tailscale</div></div><div class="mod-tags"><span class="tag tag-hw">Hardware</span></div></div>
+    <div class="module"><div class="mod-num">8</div><div class="mod-body"><div class="mod-title">AKILI Platform — automatiser sans coder</div><div class="mod-desc">Langage AAL, 16 modules, Hardware Mapping, règles en français</div></div><div class="mod-tags"><span class="tag tag-akili">AKILI</span></div></div>
+    <div class="module"><div class="mod-num">9</div><div class="mod-body"><div class="mod-title">Projet Sahel — votre application réelle</div><div class="mod-desc">Cold chain, irrigation, solaire, eau potable, grenier céréalier</div></div><div class="mod-tags"><span class="tag tag-hw">Projet</span></div></div>
+    <div class="module"><div class="mod-num">10</div><div class="mod-body"><div class="mod-title">Devenir installateur AKILI — créer votre activité</div><div class="mod-desc">Clients cibles, contrats, abonnements mensuels, réseau partenaires</div></div><div class="mod-tags"><span class="tag tag-biz">Business</span></div></div>
   </div>
   <div class="access-row">
-    <button class="btn-access btn-direct" onclick="showModal('direct')">💳 Acquérir directement — Wave / Orange Money</button>
-    <a href="https://liptalink.com" target="_blank" class="btn-access btn-lip">🔗 Accéder via Liptalink</a>
+    <button class="btn-access btn-direct" onclick="window.open('https://liptalink.com','_blank')">🔗 Accéder via Liptalink</button>
+    <button class="btn-access btn-lip" onclick="showModal('certified')">🏆 Obtenir la certification — 5 000 FCFA</button>
   </div>
 </section>
 
-<!-- LIVRE -->
-<div class="book-section" id="livre">
-  <div class="book-grid container">
-    <div class="book-mockup">
-      <div class="book-cover">
-        <div>
-          <div class="book-cover-title">Automatise ton Sahel</div>
-          <div class="book-cover-sub">Du capteur au système industriel<br>Arduino · Raspberry Pi · IEC 61131-3 · AKILI</div>
-        </div>
-        <div class="book-cover-author">Eric Fanane — CrossTech Path</div>
-        <div class="book-cover-icon">⚡</div>
-      </div>
-      <div class="book-badges">
-        <span class="book-badge">📱 Smartphone friendly</span>
-        <span class="book-badge">🌍 Contexte Sahel</span>
-        <span class="book-badge">✅ Exercices pratiques</span>
-        <span class="book-badge">🔓 Open access</span>
-      </div>
-    </div>
-    <div class="book-info">
-      <div class="section-eyebrow">Le livre</div>
-      <div class="section-title">Manuel complet téléchargeable</div>
-      <div class="section-sub">Le manuel officiel du cours. 80 pages, 10 chapitres, schémas d'explication, exemples concrets du Sahel et exercices pratiques. Format 6×9.</div>
-      <div class="book-stats">
-        <div class="book-stat"><div class="book-stat-num">80</div><div class="book-stat-label">Pages</div></div>
-        <div class="book-stat"><div class="book-stat-num">10</div><div class="book-stat-label">Chapitres</div></div>
-        <div class="book-stat"><div class="book-stat-num">30+</div><div class="book-stat-label">Exercices</div></div>
-      </div>
-      <div class="book-toc">
-        <div class="book-toc-title">Table des matières</div>
-        <div class="book-toc-item"><span class="book-toc-num">1</span><span class="book-toc-text">L'automatisation au Sahel — pourquoi c'est urgent</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">2</span><span class="book-toc-text">Les bases : capteurs, actionneurs, automates</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">3</span><span class="book-toc-text">Arduino C++ : votre premier programme</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">4</span><span class="book-toc-text">Irrigation automatique — économiser l'eau</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">5</span><span class="book-toc-text">Énergie solaire — gérer la batterie</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">6</span><span class="book-toc-text">IEC 61131-3 : Ladder et Structured Text</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">7</span><span class="book-toc-text">Raspberry Pi comme automate industriel</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">8</span><span class="book-toc-text">AKILI Platform — automatiser sans coder</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">9</span><span class="book-toc-text">Projet Sahel — votre application réelle</span></div>
-        <div class="book-toc-item"><span class="book-toc-num">10</span><span class="book-toc-text">Devenir installateur AKILI</span></div>
-      </div>
-      <div class="book-options">
-        <div class="book-option" onclick="showModal('ebook-free')">
-          <span class="book-option-icon">📖</span>
-          <div class="book-option-body"><div class="book-option-title">Aperçu gratuit — 3 premiers chapitres</div><div class="book-option-desc">PDF téléchargeable immédiatement</div></div>
-          <span class="book-option-price">GRATUIT</span>
-        </div>
-        <div class="book-option" onclick="showModal('ebook-full')" style="border-color:rgba(46,204,113,.4)">
-          <span class="book-option-icon">📚</span>
-          <div class="book-option-body"><div class="book-option-title">eBook complet — PDF intégral</div><div class="book-option-desc">80 pages, tous les chapitres, exercices et annexes</div></div>
-          <span class="book-option-price">5 000 FCFA</span>
-        </div>
-        <div class="book-option" style="opacity:.6;cursor:default">
-          <span class="book-option-icon">🖨</span>
-          <div class="book-option-body"><div class="book-option-title">Version imprimée — Lulu.com</div><div class="book-option-desc">Format 6×9 — livraison internationale</div></div>
-          <span class="book-option-price">Bientôt</span>
-        </div>
-      </div>
-      <div class="book-note">📬 Le livre est envoyé par email en PDF après confirmation du paiement Wave/Orange Money</div>
-    </div>
-  </div>
-</div>
-
-<!-- AKILI PLATFORM -->
-<section id="akili" class="alt">
+<!-- TARIFS FORMATION -->
+<section class="alt">
   <div class="container">
-    <div class="section-eyebrow">AKILI Platform</div>
-    <div class="section-title">Solution IoT industrielle africaine</div>
-    <div class="section-sub">Plateforme d'automatisation sur Raspberry Pi. 16 modules préconfigurés, intelligence artificielle intégrée, supervision en temps réel depuis smartphone. Conçu en Afrique pour l'Afrique.</div>
-  </div>
-  <div class="akili-features">
-    <div class="akili-feat"><div class="akili-feat-icon">❄️</div><div class="akili-feat-title">Cold Chain & Pharmacie</div><div class="akili-feat-desc">Surveillance température vaccins et médicaments. Logs HACCP automatiques. Alertes SMS.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">🌱</div><div class="akili-feat-title">Agriculture & Irrigation</div><div class="akili-feat-desc">Capteurs sol, pompes automatiques, météo locale. Économiser 40% d'eau.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">☀️</div><div class="akili-feat-title">Énergie Solaire</div><div class="akili-feat-desc">Gestion batterie, MPPT, coupures programmées. Villages hors réseau.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">💧</div><div class="akili-feat-title">Gestion de l'Eau</div><div class="akili-feat-desc">Pompage automatique, qualité eau, distribution programmée.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">🤖</div><div class="akili-feat-title">Intelligence Artificielle</div><div class="akili-feat-desc">Détection d'anomalies, prédiction de pannes, optimisation PID automatique.</div></div>
-    <div class="akili-feat"><div class="akili-feat-icon">📱</div><div class="akili-feat-title">Accès Smartphone</div><div class="akili-feat-desc">Dashboard web accessible depuis n'importe quel appareil. VPN sécurisé intégré.</div></div>
-  </div>
-  <div class="akili-demo container">
-    <div class="akili-demo-bar">
-      <div class="akili-demo-dot" style="background:#ff5f57"></div>
-      <div class="akili-demo-dot" style="background:#febc2e"></div>
-      <div class="akili-demo-dot" style="background:#28c840"></div>
-      <span style="color:rgba(255,255,255,.3);font-size:12px;margin-left:8px">AAL — AKILI Automation Language</span>
-    </div>
-    <div class="akili-demo-line" style="color:#4d9e78">// Règle d'alerte cold chain — pharmacie Ouagadougou</div>
-    <div class="akili-demo-line" style="color:#569cd6">REGLE: <span style="color:#ce9178">alerte_temperature_critique</span></div>
-    <div class="akili-demo-line" style="color:#569cd6">SI: <span style="color:#fff">fridge_1 > 8.0</span></div>
-    <div class="akili-demo-line" style="color:#569cd6">ET: <span style="color:#fff">depuis 5 minutes</span></div>
-    <div class="akili-demo-line" style="color:#569cd6">ALORS: <span style="color:#ce9178">SMS +22670000000 "⚠ Alerte! Temp {fridge_1}°C dépasse 8°C"</span></div>
-    <div class="akili-demo-line" style="padding-left:48px;color:#ce9178">EMAIL responsable@pharmacie.bf "Rapport température critique"</div>
-    <div class="akili-demo-line" style="padding-left:48px;color:#ce9178">ALARME priorité haute</div>
-    <div class="akili-demo-line" style="margin-top:12px;color:rgba(255,255,255,.2)">// Résultat : SMS envoyé en 3 secondes — aucun code requis</div>
-  </div>
-  <div style="text-align:center;margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-    <button class="btn-access btn-direct" style="flex:none;padding:14px 28px" onclick="showModal('demo')">📅 Demander une démonstration AKILI</button>
-    <button class="btn-access btn-lip" style="flex:none;padding:14px 28px" onclick="showModal('installer')">🔧 Devenir installateur</button>
-  </div>
-</section>
-
-<!-- TARIFS -->
-<section id="tarifs">
-  <div class="container">
-    <div class="section-eyebrow">Tarifs</div>
-    <div class="section-title">Choisissez votre formule</div>
-    <div class="section-sub">Cours gratuit pour le plus grand nombre. Certification et tutorat pour ceux qui veulent aller plus loin.</div>
+    <div class="eyebrow">Tarifs formation</div>
+    <div class="s-title">Choisissez votre formule</div>
+    <div class="s-sub">Le cours est gratuit pour commencer. Certification et tutorat pour ceux qui veulent aller plus loin.</div>
   </div>
   <div class="pricing">
     <div class="price-card">
@@ -467,7 +571,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
         <li>Aperçu livre 3 chapitres</li>
         <li>Forum communauté</li>
       </ul>
-      <button class="btn-price" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">Commencer</button>
+      <button class="btn-price" onclick="window.open('https://liptalink.com','_blank')">Commencer</button>
     </div>
     <div class="price-card featured">
       <div class="featured-ribbon">⭐ Recommandé</div>
@@ -478,7 +582,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
       <div class="price-period">Paiement unique</div>
       <ul class="price-list">
         <li>Tout le gratuit</li>
-        <li>eBook PDF complet (80 pages)</li>
+        <li>eBook PDF 80 pages</li>
         <li>Attestation officielle</li>
         <li>QR code vérifiable</li>
       </ul>
@@ -486,7 +590,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
     </div>
     <div class="price-card">
       <span class="price-icon">👨‍🏫</span>
-      <div class="price-name">Tutorat Premium</div>
+      <div class="price-name">Tutorat</div>
       <div class="price-amount">25 000</div>
       <div class="price-fcfa">FCFA</div>
       <div class="price-period">Par mois</div>
@@ -500,48 +604,76 @@ footer{background:var(--dark);padding:48px 5% 24px}
     </div>
     <div class="price-card">
       <span class="price-icon">🔧</span>
-      <div class="price-name">Installateur AKILI</div>
+      <div class="price-name">Installateur</div>
       <div class="price-amount">50 000</div>
       <div class="price-fcfa">FCFA</div>
       <div class="price-period">Paiement unique</div>
       <ul class="price-list">
         <li>Formation complète</li>
-        <li>Kit installateur</li>
+        <li>Kit de démonstration</li>
         <li>Licence revendeur</li>
-        <li>Support technique</li>
+        <li>Support technique dédié</li>
       </ul>
       <button class="btn-price" onclick="showModal('installer')">Devenir installateur</button>
     </div>
   </div>
 </section>
 
-<!-- OUTILS -->
-<section class="alt">
-  <div class="container">
-    <div class="section-eyebrow">Outils</div>
-    <div class="section-title">100% gratuit — 100% smartphone compatible</div>
-    <div class="section-sub">Tous les outils fonctionnent sur smartphone et tablette. Connexion 3G suffisante. Zéro installation obligatoire pour commencer.</div>
+<!-- LIVRE -->
+<div class="book-section" id="livre">
+  <div class="book-grid container">
+    <div>
+      <div class="book-cover">
+        <div><div class="book-cover-title">Automatise ton Sahel</div><div class="book-cover-sub">Du capteur au système industriel<br>Arduino · Raspberry Pi · IEC 61131-3 · AKILI</div></div>
+        <div class="book-cover-author">Eric Fanane — CrossTech Path</div>
+        <div class="book-cover-icon">⚡</div>
+      </div>
+      <div class="book-badges">
+        <span class="book-badge">📱 Smartphone</span>
+        <span class="book-badge">🌍 Contexte Sahel</span>
+        <span class="book-badge">✅ Exercices pratiques</span>
+        <span class="book-badge">💻 Codes sources</span>
+      </div>
+    </div>
+    <div class="book-info">
+      <div class="eyebrow">Le manuel officiel</div>
+      <div class="s-title">Automatise ton Sahel</div>
+      <div class="s-sub">80 pages, 10 chapitres, schémas d'explication, exemples concrets du Sahel, exercices pratiques et codes sources complets. Format 6×9.</div>
+      <div class="book-stats">
+        <div class="book-stat"><div class="book-stat-num">80</div><div class="book-stat-label">Pages</div></div>
+        <div class="book-stat"><div class="book-stat-num">10</div><div class="book-stat-label">Chapitres</div></div>
+        <div class="book-stat"><div class="book-stat-num">30+</div><div class="book-stat-label">Exercices</div></div>
+      </div>
+      <div class="book-options">
+        <div class="book-option" onclick="showModal('ebook-free')">
+          <span class="book-option-icon">📖</span>
+          <div class="book-option-body"><div class="book-option-title">Aperçu gratuit — 3 premiers chapitres</div><div class="book-option-desc">PDF envoyé par email sur demande WhatsApp</div></div>
+          <span class="book-option-price">GRATUIT</span>
+        </div>
+        <div class="book-option" onclick="showModal('ebook-full')" style="border-color:rgba(46,204,113,.4)">
+          <span class="book-option-icon">📚</span>
+          <div class="book-option-body"><div class="book-option-title">eBook complet — PDF intégral 80 pages</div><div class="book-option-desc">Paiement Wave / Orange Money — livraison email 1h</div></div>
+          <span class="book-option-price">5 000 FCFA</span>
+        </div>
+        <div class="book-option" style="opacity:.5;cursor:default">
+          <span class="book-option-icon">🖨</span>
+          <div class="book-option-body"><div class="book-option-title">Version imprimée — Lulu.com</div><div class="book-option-desc">Format 6×9 — livraison internationale</div></div>
+          <span class="book-option-price">Bientôt</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="tools">
-    <div class="tool"><span class="tool-icon">🔧</span><div class="tool-name">TinkerCAD</div><div class="tool-desc">Simulation Arduino</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">⚡</span><div class="tool-name">Wokwi</div><div class="tool-desc">Simulation avancée</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">💻</span><div class="tool-name">OpenPLC Editor</div><div class="tool-desc">IEC 61131-3</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">📱</span><div class="tool-name">AKILI Platform</div><div class="tool-desc">Sur demande</div><span class="tool-free">Demo</span></div>
-    <div class="tool"><span class="tool-icon">🎬</span><div class="tool-name">Vidéos Vimeo</div><div class="tool-desc">Démonstrations</div><span class="tool-free">Gratuit</span></div>
-    <div class="tool"><span class="tool-icon">💬</span><div class="tool-name">Forum Liptalink</div><div class="tool-desc">Communauté</div><span class="tool-free">Gratuit</span></div>
-  </div>
-</section>
+</div>
 
-<!-- TUTEUR -->
-<section id="tuteur">
+<!-- FORMATEUR -->
+<section id="formateur" class="alt">
   <div class="container">
-    <div class="section-eyebrow">Votre formateur</div>
-    <div class="section-title">Eric Fanane</div>
-    <div class="section-sub">Ingénieur automaticien et enseignant certifié avec 25 ans d'expérience en industrie et enseignement technique.</div>
+    <div class="eyebrow">Le fondateur</div>
+    <div class="s-title">Eric Fanane</div>
   </div>
   <div class="tutor-card">
     <div class="tutor-avatar">EF</div>
-    <div class="tutor-right">
+    <div>
       <div class="tutor-name">Eric Fanane</div>
       <div class="tutor-role">Ingénieur Automaticien — Enseignant Certifié — Fondateur AKILI Platform</div>
       <div class="tutor-tags">
@@ -552,10 +684,10 @@ footer{background:var(--dark);padding:48px 5% 24px}
         <span class="tutor-tag">Bilingue FR/EN</span>
         <span class="tutor-tag">Créateur AKILI</span>
       </div>
-      <div class="tutor-bio">Formé à l'Institut Technologique de Stockholm (STI) en automatisation industrielle et thermodynamique, et certifié enseignant à l'ENS Koudougou, Eric Fanane a passé 5 ans à enseigner l'électronique et la physique au Lycée Technique de Ouagadougou et 20 autres années d'expérience dans des entreprises de haute technologie, notamment en Europe du Nord. Il a développé la plateforme AKILI IoT pour répondre aux besoins réels de l'industrie africaine, et publie ses cours et livres techniques pour rendre l'automatisation accessible à tous.</div>
+      <div class="tutor-bio">Formé à l'Institut Technologique de Stockholm (STI) en automatisation industrielle et thermodynamique, et certifié enseignant à l'ENS Koudougou, Eric Fanane a passé 5 ans à enseigner l'électronique et la physique au Lycée Technique de Ouagadougou et 20 autres années d'expérience dans des entreprises de haute technologie en Europe du Nord. Il a développé la plateforme AKILI IoT pour répondre aux besoins réels de l'industrie africaine, et publie ses cours et livres techniques pour rendre l'automatisation accessible à tous.</div>
       <div class="tutor-actions">
         <button class="btn-tutor primary" onclick="window.open('https://wa.me/46729394171','_blank')">💬 WhatsApp</button>
-        <button class="btn-tutor secondary" onclick="showModal('tutorat')">📅 Réserver une session</button>
+        <button class="btn-tutor secondary" onclick="showModal('tutorat')">📅 Session de tutorat</button>
         <button class="btn-tutor secondary" onclick="window.open('mailto:info@akilijuma.org','_blank')">📧 Email</button>
       </div>
     </div>
@@ -563,44 +695,43 @@ footer{background:var(--dark);padding:48px 5% 24px}
 </section>
 
 <!-- FAQ -->
-<section class="alt">
+<section>
   <div class="container">
-    <div class="section-eyebrow">FAQ</div>
-    <div class="section-title">Questions fréquentes</div>
+    <div class="eyebrow">FAQ</div>
+    <div class="s-title">Questions fréquentes</div>
   </div>
   <div class="faq container">
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Ai-je besoin d'un ordinateur ?<span class="faq-toggle">+</span></div><div class="faq-a">Non — les simulations et vidéos fonctionnent sur smartphone. Seul OpenPLC Editor nécessite un ordinateur ou une tablette.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment télécharger le livre ?<span class="faq-toggle">+</span></div><div class="faq-a">L'aperçu gratuit (3 chapitres) est disponible immédiatement sur demande. Le livre complet (5 000 FCFA) est envoyé par email en PDF après confirmation du paiement Wave ou Orange Money via WhatsApp.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment obtenir mon certificat ?<span class="faq-toggle">+</span></div><div class="faq-a">Complétez les 10 modules, obtenez 70% au QCM final, soumettez votre projet. Le certificat est généré automatiquement avec un QR code vérifiable. Le paiement de 5 000 FCFA active l'attestation officielle.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment voir AKILI en action ?<span class="faq-toggle">+</span></div><div class="faq-a">AKILI est une solution industrielle professionnelle. Pour voir une démonstration, contactez-nous via le formulaire de demande de démo. Eric Fanane organise une session personnalisée selon votre secteur d'activité.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment payer en FCFA ?<span class="faq-toggle">+</span></div><div class="faq-a">Paiement via Wave, Orange Money et Mobile Money disponibles. Contactez-nous sur WhatsApp au +46 729 394 171 pour recevoir les instructions et finaliser votre inscription.</div></div>
-    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Qu'est-ce que le programme Installateur AKILI ?<span class="faq-toggle">+</span></div><div class="faq-a">Vous apprenez à installer AKILI chez des clients (pharmacies, entrepôts, fermes). Vous devenez revendeur agréé avec des revenus récurrents de 20 000 à 35 000 FCFA par client par mois.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">AKILI nécessite-t-il un abonnement cloud ?<span class="faq-toggle">+</span></div><div class="faq-a">Non — AKILI tourne entièrement en local sur le Raspberry Pi chez le client. Aucun serveur cloud, aucun hébergement à payer. L'accès distant se fait via Tailscale VPN gratuit. Vos données restent sur site, sous votre contrôle.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si internet est coupé chez le client ?<span class="faq-toggle">+</span></div><div class="faq-a">AKILI continue de fonctionner parfaitement. Les capteurs sont lus, les règles s'exécutent, et les alertes SMS passent par le module GSM — pas par internet. Seul l'accès distant via Tailscale est temporairement indisponible.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment fonctionne l'abonnement mensuel client ?<span class="faq-toggle">+</span></div><div class="faq-a">Le client paie un abonnement mensuel pour la maintenance et le support. Cela couvre la surveillance à distance via Tailscale, les mises à jour logicielles, le support technique, et le rapport mensuel. Le tarif est établi sur devis selon le nombre de capteurs et le secteur.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment se déroule la démonstration ?<span class="faq-toggle">+</span></div><div class="faq-a">La démo est une session personnalisée de 30 minutes avec Eric Fanane. Vous voyez AKILI en fonctionnement réel avec de vrais capteurs de température, des règles AAL actives, et le dashboard en temps réel. Elle est gratuite et sans engagement. Contactez-nous pour planifier.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Peut-on devenir installateur sans être ingénieur ?<span class="faq-toggle">+</span></div><div class="faq-a">Oui — la formation "Automatise ton Sahel" et le programme installateur sont conçus pour les techniciens de niveau Bac S/T. Si vous savez connecter des câbles et suivre des instructions, vous pouvez installer AKILI. La configuration logicielle s'apprend en quelques semaines.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Comment payer en FCFA ?<span class="faq-toggle">+</span></div><div class="faq-a">Nous acceptons Wave, Orange Money et Mobile Money pour tous nos produits. Contactez-nous sur WhatsApp pour recevoir les instructions de paiement et finaliser votre commande ou inscription.</div></div>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section>
-  <div class="newsletter">
-    <h3>📬 Restez informé</h3>
-    <p>Nouveaux modules, livres, sessions live, opportunités installateur AKILI — soyez le premier notifié.</p>
-    <div class="newsletter-form">
-      <input class="newsletter-input" type="email" placeholder="votre@email.com">
-      <button class="newsletter-btn" onclick="alert('Merci ! Nous vous contacterons bientôt.')">S\'inscrire</button>
-    </div>
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Prêt à automatiser l'Afrique ?</h2>
+  <p>Que vous soyez technicien, entrepreneur ou responsable d'établissement, AKILI est votre solution. Commençons par une conversation.</p>
+  <div class="cta-btns">
+    <button class="btn-hero-p" onclick="showModal('demo')">📅 Demander une démonstration</button>
+    <button class="btn-hero-s" onclick="showModal('devis')">💬 Devis gratuit</button>
+    <button class="btn-hero-s" onclick="showModal('installer')">🔧 Devenir installateur</button>
   </div>
-</section>
+</div>
 
 <!-- CONTACT -->
 <section id="contact" class="alt">
   <div class="container">
-    <div class="section-eyebrow">Contact</div>
-    <div class="section-title">Nous contacter</div>
-    <div class="section-sub">Pour toute question sur le cours, le tutorat, les livres ou AKILI Platform.</div>
+    <div class="eyebrow">Contact</div>
+    <div class="s-title">Nous contacter</div>
+    <div class="s-sub">Pour toute question sur les solutions AKILI, les kits, la formation ou le livre.</div>
   </div>
   <div class="contact-grid">
     <div class="contact-card"><span class="contact-icon">💬</span><div class="contact-label">WhatsApp</div><div class="contact-value"><a href="https://wa.me/46729394171">+46 729 394 171</a></div></div>
     <div class="contact-card"><span class="contact-icon">📧</span><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:info@akilijuma.org">info@akilijuma.org</a></div></div>
-    <div class="contact-card"><span class="contact-icon">🌐</span><div class="contact-label">Site AKILI</div><div class="contact-value"><a href="https://akilijuma.org" target="_blank">akilijuma.org</a></div></div>
+    <div class="contact-card"><span class="contact-icon">🌐</span><div class="contact-label">Site AKILI</div><div class="contact-value"><a href="https://akilijuma.org">akilijuma.org</a></div></div>
     <div class="contact-card"><span class="contact-icon">📚</span><div class="contact-label">Liptalink</div><div class="contact-value"><a href="https://liptalink.com" target="_blank">liptalink.com</a></div></div>
   </div>
 </section>
@@ -610,7 +741,7 @@ footer{background:var(--dark);padding:48px 5% 24px}
   <div class="footer-grid">
     <div>
       <div class="footer-brand">AKILI JUMA</div>
-      <div class="footer-desc">Formation en automatisation industrielle pour les jeunes d'Afrique. CrossTech Path — AKILI Platform — Livres techniques.</div>
+      <div class="footer-desc">Plateforme IoT industrielle africaine. Solutions hardware, abonnement mensuel, formation et livre technique pour l'Afrique du Sahel.</div>
       <div class="footer-social">
         <a href="https://wa.me/46729394171" target="_blank">💬</a>
         <a href="mailto:info@akilijuma.org">📧</a>
@@ -619,35 +750,36 @@ footer{background:var(--dark);padding:48px 5% 24px}
       </div>
     </div>
     <div>
+      <div class="footer-col-title">Solutions</div>
+      <ul class="footer-links">
+        <li><a href="#kits">Cold Chain</a></li>
+        <li><a href="#kits">Agriculture</a></li>
+        <li><a href="#kits">Énergie Solaire</a></li>
+        <li><a href="#kits">Gestion Eau</a></li>
+      </ul>
+    </div>
+    <div>
       <div class="footer-col-title">Formation</div>
       <ul class="footer-links">
-        <li><a href="#cours">Le cours</a></li>
-        <li><a href="#tarifs">Tarifs</a></li>
-        <li><a href="#tuteur">Formateur</a></li>
+        <li><a href="#formation">Le cours</a></li>
+        <li><a href="#livre">Le livre</a></li>
         <li><a href="https://liptalink.com" target="_blank">Liptalink</a></li>
+        <li><a href="#formateur">Formateur</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Ressources</div>
       <ul class="footer-links">
-        <li><a href="#livre">Livre PDF</a></li>
         <li><a href="https://github.com/ericfanane" target="_blank">GitHub AKILI</a></li>
         <li><a href="https://wokwi.com" target="_blank">Wokwi</a></li>
-        <li><a href="https://tinkercad.com" target="_blank">TinkerCAD</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">AKILI</div>
-      <ul class="footer-links">
-        <li><a href="#akili">La plateforme</a></li>
-        <li><a href="https://akilijuma.org" target="_blank">akilijuma.org</a></li>
-        <li><a href="#tarifs">Devenir installateur</a></li>
+        <li><a href="https://autonomylogic.com" target="_blank">OpenPLC</a></li>
         <li><a href="#contact">Support</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2026 CrossTech Path — AKILI JUMA — SIRET 89948505600019</div>
+    <div class="footer-copy">info@akilijuma.org — akilijuma.org</div>
   </div>
 </footer>
 
@@ -660,53 +792,88 @@ footer{background:var(--dark);padding:48px 5% 24px}
 </div>
 
 <script>
-window.addEventListener('scroll',function(){
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
-});
-document.getElementById('burger').addEventListener('click',function(){
-  document.getElementById('mobilenav').classList.toggle('open');
-});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20)});
+document.getElementById('burger').addEventListener('click',function(){document.getElementById('mobilenav').classList.toggle('open')});
 function closeMobile(){document.getElementById('mobilenav').classList.remove('open')}
 function toggleFaq(el){el.parentElement.classList.toggle('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 
+const M = {
+  'demo':`<div class="modal-h">📅 Demander une démonstration AKILI</div>
+    <div class="modal-p">La démo est une session personnalisée de 30 minutes avec Eric Fanane. Vous voyez AKILI avec de vrais capteurs et données réelles — pas une simulation.</div>
+    <div class="modal-info"><strong>La démo inclut :</strong><br>• Dashboard AKILI en temps réel avec capteurs physiques<br>• Démonstration des règles AAL pour votre secteur<br>• Questions-réponses personnalisées<br>• Gratuite et sans engagement</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Bonjour%20Eric%2C%20je%20souhaite%20une%20d%C3%A9monstration%20d'AKILI" target="_blank">💬 Planifier via WhatsApp</a>
+    <a class="btn-em" href="mailto:info@akilijuma.org?subject=Demande%20d%C3%A9monstration%20AKILI">📧 Demander par email</a>`,
+
+  'devis':`<div class="modal-h">💬 Devis gratuit AKILI</div>
+    <div class="modal-p">Décrivez votre besoin et nous vous envoyons un devis personnalisé sous 24h.</div>
+    <div class="modal-info">Précisez dans votre message :<br>• Votre secteur d'activité<br>• Le nombre de capteurs souhaités<br>• Votre pays et ville<br>• Votre budget approximatif</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Bonjour%2C%20je%20souhaite%20un%20devis%20pour%20AKILI" target="_blank">💬 Devis via WhatsApp</a>
+    <a class="btn-em" href="mailto:info@akilijuma.org?subject=Demande%20devis%20AKILI">📧 Devis par email</a>`,
+
+  'sub':`<div class="modal-h">💬 Abonnement mensuel AKILI</div>
+    <div class="modal-p">Le tarif de l'abonnement mensuel dépend de votre installation. Contactez-nous pour établir un contrat adapté à vos besoins.</div>
+    <div class="modal-info">Facteurs qui influencent le tarif :<br>• Nombre de capteurs installés<br>• Secteur d'activité<br>• Niveau de service souhaité<br>• Fréquence d'intervention</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20souhaite%20discuter%20de%20l'abonnement%20mensuel%20AKILI" target="_blank">💬 Discuter via WhatsApp</a>
+    <a class="btn-em" href="mailto:info@akilijuma.org?subject=Abonnement%20mensuel%20AKILI">📧 Contacter par email</a>`,
+
+  'sol-cold':`<div class="modal-h">❄️ Solution Cold Chain</div>
+    <div class="modal-p">Surveillance complète de la chaîne du froid pour pharmacies, dispensaires et entrepôts de produits sensibles.</div>
+    <div class="modal-info"><strong>Inclus dans la solution :</strong><br>• Raspberry Pi 5 + AKILI pré-installé<br>• Capteurs DS18B20 température<br>• Détection coupure électrique<br>• Module GSM alertes SMS<br>• Boitier industriel<br>• Logs HACCP automatiques</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20solution%20AKILI%20Cold%20Chain" target="_blank">💬 Demander un devis</a>`,
+
+  'sol-agri':`<div class="modal-h">🌱 Solution Agriculture</div>
+    <div class="modal-p">Irrigation automatique et surveillance des cultures pour fermes maraîchères et serres.</div>
+    <div class="modal-info"><strong>Inclus dans la solution :</strong><br>• Raspberry Pi 5 + AKILI pré-installé<br>• Capteurs humidité sol capacitifs<br>• DHT22 température/humidité air<br>• Relais 8 canaux pour pompes<br>• Planification horaire irrigation</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20solution%20AKILI%20Agriculture" target="_blank">💬 Demander un devis</a>`,
+
+  'sol-solar':`<div class="modal-h">☀️ Solution Énergie Solaire</div>
+    <div class="modal-p">Gestion intelligente des batteries solaires pour villages et sites isolés.</div>
+    <div class="modal-info"><strong>Inclus dans la solution :</strong><br>• Raspberry Pi 5 + AKILI pré-installé<br>• Module INA219 courant/tension<br>• ADS1115 convertisseur analogique<br>• Relais gestion des charges<br>• Historique production 30 jours</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20solution%20AKILI%20Solar" target="_blank">💬 Demander un devis</a>`,
+
+  'sol-water':`<div class="modal-h">💧 Solution Gestion de l'Eau</div>
+    <div class="modal-p">Pompage automatique et surveillance qualité pour forages et châteaux d'eau.</div>
+    <div class="modal-info"><strong>Inclus dans la solution :</strong><br>• Raspberry Pi 5 + AKILI pré-installé<br>• Capteur niveau HC-SR04<br>• Capteur turbidité eau<br>• Relais commande pompe<br>• Rapport mensuel consommation</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20solution%20AKILI%20Water" target="_blank">💬 Demander un devis</a>`,
+
+  'sol-health':`<div class="modal-h">🏥 Solution Santé</div>
+    <div class="modal-p">Surveillance des chambres froides médicales et contrôle des conditions dans les centres de santé.</div>
+    <div class="modal-info"><strong>Conforme aux normes :</strong><br>• OMS pour la conservation des vaccins<br>• HACCP pour les produits pharmaceutiques<br>• Traçabilité complète 24h/24</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20suis%20int%C3%A9ress%C3%A9%20par%20la%20solution%20AKILI%20Sant%C3%A9" target="_blank">💬 Demander un devis</a>`,
+
+  'sol-custom':`<div class="modal-h">⚙️ Solution Sur Mesure</div>
+    <div class="modal-p">Votre secteur n'est pas dans la liste ? Nous analysons vos besoins et configurons AKILI spécifiquement pour vous.</div>
+    <div class="modal-info">Nous avons 16 modules disponibles couvrant l'industrie, l'élevage, l'aquaculture, les serres, le transport froid et plus encore.</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=J'ai%20un%20besoin%20sp%C3%A9cifique%20pour%20AKILI%2C%20pouvons-nous%20en%20discuter" target="_blank">💬 Discutons de votre projet</a>`,
+
+  'installer':`<div class="modal-h">🔧 Devenir installateur AKILI</div>
+    <div class="modal-p">Créez votre activité d'installation et de maintenance AKILI dans votre pays.</div>
+    <div class="modal-info"><strong>Formation installateur — 50 000 FCFA</strong><br><br>• Formation technique complète<br>• Kit de démonstration inclus<br>• Modèles de contrats clients<br>• Accès réseau partenaires<br>• Support technique dédié<br><br>💡 Avec 10 clients en abonnement mensuel = revenus récurrents significatifs</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20veux%20devenir%20installateur%20AKILI" target="_blank">💬 Candidater via WhatsApp</a>
+    <a class="btn-em" href="mailto:info@akilijuma.org?subject=Programme%20Installateur%20AKILI">📧 Candidater par email</a>`,
+
+  'certified':`<div class="modal-h">🏆 Certification CrossTech Path — 5 000 FCFA</div>
+    <div class="modal-p">Complétez les 10 modules, obtenez 70% au QCM final, et recevez votre attestation officielle avec QR code vérifiable.</div>
+    <div class="modal-info">Inclut : eBook PDF complet (80 pages) + Attestation officielle + QR code<br><br>Paiement : Wave ou Orange Money via WhatsApp.</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20veux%20la%20certification%20CrossTech%20Path%205000%20FCFA" target="_blank">💬 Payer via WhatsApp</a>`,
+
+  'tutorat':`<div class="modal-h">👨‍🏫 Session de tutorat — 25 000 FCFA/mois</div>
+    <div class="modal-p">2 sessions live par mois avec Eric Fanane, correction de projet personnalisée, accès WhatsApp direct, certificat signé.</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20veux%20le%20tutorat%20premium%20avec%20Eric%20Fanane" target="_blank">💬 Réserver via WhatsApp</a>`,
+
+  'ebook-free':`<div class="modal-h">📖 Aperçu gratuit — 3 chapitres</div>
+    <div class="modal-p">Recevez les 3 premiers chapitres du livre "Automatise ton Sahel" en PDF par email. Envoyez-nous un message WhatsApp avec votre email.</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Bonjour%2C%20je%20voudrais%20l'aper%C3%A7u%20gratuit%20du%20livre%20Automatise%20ton%20Sahel" target="_blank">💬 Recevoir via WhatsApp</a>`,
+
+  'ebook-full':`<div class="modal-h">📚 eBook complet — 5 000 FCFA</div>
+    <div class="modal-p">80 pages, 10 chapitres, codes sources complets. Envoyé en PDF par email après confirmation du paiement.</div>
+    <div class="modal-info">1. Contactez-nous sur WhatsApp<br>2. Payez 5 000 FCFA via Wave ou Orange Money<br>3. Recevez le PDF par email sous 1h</div>
+    <a class="btn-wa" href="https://wa.me/46729394171?text=Je%20veux%20acheter%20le%20livre%20Automatise%20ton%20Sahel%20-%205000%20FCFA" target="_blank">💬 Payer via WhatsApp</a>`
+};
+
 function showModal(type){
-  const modals={
-    'demo':`<h3 style="color:#0f6e56;margin-bottom:12px;font-size:20px">📅 Demander une démonstration AKILI</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:20px">AKILI est une solution industrielle professionnelle. Contactez-nous pour organiser une démonstration personnalisée selon votre secteur d'activité (pharmacie, agriculture, énergie, eau).</p>
-      <div style="background:#e1f5ee;border-radius:10px;padding:16px;margin-bottom:16px;font-size:13px;color:#085041;line-height:1.8">
-        <strong>La démo inclut :</strong><br>
-        • Présentation live de l'interface AKILI<br>
-        • Démonstration des capteurs en temps réel<br>
-        • Configuration des règles AAL pour votre secteur<br>
-        • Questions-réponses avec Eric Fanane
-      </div>
-      <a href="https://wa.me/46729394171?text=Bonjour%20Eric%2C%20je%20souhaite%20demander%20une%20d%C3%A9monstration%20d'AKILI%20Platform" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px;text-decoration:none">💬 Demander via WhatsApp</a>
-      <a href="mailto:info@akilijuma.org?subject=Demande%20de%20d%C3%A9monstration%20AKILI" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">📧 Demander par email</a>`,
-    'direct':`<h3 style="color:#0f6e56;margin-bottom:12px">💳 Paiement direct</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Contactez-nous sur WhatsApp pour acquérir le cours ou la certification. Nous acceptons Wave, Orange Money et Mobile Money.</p>
-      <a href="https://wa.me/46729394171?text=Je%20souhaite%20acqu%C3%A9rir%20le%20cours%20Automatise%20ton%20Sahel" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;margin-bottom:10px;text-decoration:none">💬 WhatsApp — +46 729 394 171</a>
-      <a href="mailto:info@akilijuma.org?subject=Cours%20Automatise%20ton%20Sahel" style="display:block;background:#0f6e56;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">📧 Email — info@akilijuma.org</a>`,
-    'ebook-free':`<h3 style="color:#0f6e56;margin-bottom:12px">📖 Aperçu gratuit — 3 chapitres</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Recevez les 3 premiers chapitres du livre "Automatise ton Sahel" en PDF. Entrez votre email et envoyez-nous un message WhatsApp.</p>
-      <a href="https://wa.me/46729394171?text=Bonjour%2C%20je%20voudrais%20recevoir%20l'aper%C3%A7u%20gratuit%20du%20livre%20Automatise%20ton%20Sahel" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Recevoir le PDF gratuit via WhatsApp</a>
-      <p style="color:#aaa;font-size:12px;text-align:center;margin-top:10px">Envoi par email sous 24h</p>`,
-    'ebook-full':`<h3 style="color:#0f6e56;margin-bottom:12px">📚 eBook complet — 5 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">80 pages, 10 chapitres complets, exercices et annexes. Envoyé en PDF par email après confirmation du paiement.</p>
-      <div style="background:#e1f5ee;border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041;line-height:1.8"><strong>Comment payer :</strong><br>1. Contactez-nous sur WhatsApp<br>2. Envoyez 5 000 FCFA via Wave ou Orange Money<br>3. Recevez le PDF par email sous 1h</div>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20acheter%20le%20livre%20Automatise%20ton%20Sahel%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Payer via WhatsApp</a>`,
-    'certified':`<h3 style="color:#0f6e56;margin-bottom:12px">🏆 Formule Certifiée — 5 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">eBook PDF complet (80 pages) + Attestation officielle + QR code vérifiable.</p>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20la%20formule%20Certifi%C3%A9e%20-%205000%20FCFA" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Payer via WhatsApp</a>`,
-    'tutorat':`<h3 style="color:#0f6e56;margin-bottom:12px">👨‍🏫 Tutorat Premium — 25 000 FCFA/mois</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">2 sessions live par mois avec Eric Fanane, correction de projet, accès WhatsApp direct, certificat signé.</p>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20le%20tutorat%20premium%20avec%20Eric%20Fanane" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Contacter Eric sur WhatsApp</a>`,
-    'installer':`<h3 style="color:#0f6e56;margin-bottom:12px">🔧 Programme Installateur AKILI — 50 000 FCFA</h3>
-      <p style="color:#555;font-size:14px;line-height:1.8;margin-bottom:16px">Formation complète + kit installateur + licence revendeur + support technique + réseau partenaires.</p>
-      <div style="background:#e1f5ee;border-radius:10px;padding:14px;margin-bottom:16px;font-size:13px;color:#085041">💡 Avec 10 clients à 20 000 FCFA/mois = 200 000 FCFA récurrents chaque mois</div>
-      <a href="https://wa.me/46729394171?text=Je%20veux%20devenir%20installateur%20AKILI" target="_blank" style="display:block;background:#25d366;color:#fff;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none">💬 Devenir installateur — WhatsApp</a>`
-  };
-  document.getElementById('modal-content').innerHTML=modals[type]||'';
+  document.getElementById('modal-content').innerHTML = M[type] || '';
   document.getElementById('modal').classList.add('open');
 }
 </script>
